@@ -13,11 +13,11 @@
         </Grid.ColumnDefinitions>
         <Label Content="" HorizontalAlignment="Left" Margin="71,22,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Grid.Column="1"/>
         <Label Content="Usuario" HorizontalAlignment="Left" Margin="51,76,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="51,177,0,0" VerticalAlignment="Top" Width="238" Height="27" Grid.ColumnSpan="2"/>
+        <PasswordBox x:Name="tbContra" HorizontalAlignment="Left" Margin="51,177,0,0" VerticalAlignment="Top" Width="238" Height="27" Grid.ColumnSpan="2"/>
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="51,146,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Button x:Name="btInicioSesion" Content="Iniciar sesión" HorizontalAlignment="Left" Margin="66,261,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <PasswordBox x:Name="pbPassword_Copy" HorizontalAlignment="Left" Margin="51,107,0,0" VerticalAlignment="Top" Width="238" Height="27" Grid.ColumnSpan="2"/>
+        <Button x:Name="btInicioSesion" Content="Iniciar sesión" HorizontalAlignment="Left" Margin="66,261,0,0" VerticalAlignment="Top" Grid.Column="1" Click="btInicioSesion_Click"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="60,31,0,0" Text="Login&#xD;&#xA;" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" FontFamily="Arial Black" FontSize="25"/>
+        <TextBox x:Name="tbUsuario" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="27" Margin="51,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
 
     </Grid>
 </Window>

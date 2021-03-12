@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace ProyectoTDBI_Grupo4
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for adminView.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class adminView : Window
     {
-        public Window1()
+        public adminView()
         {
             InitializeComponent();
         }

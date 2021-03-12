@@ -23,6 +23,23 @@ namespace ProyectoTDBI_Grupo4
         public MainWindow()
         {
             InitializeComponent();
+         
+        }
+
+        private void btInicioSesion_Click(object sender, RoutedEventArgs e)
+        {
+            String Usuario = tbUsuario.Text;
+            String Contra = tbContra.Password;
+
+            if (Usuario == "admin")
+            {
+                if (Contra == "123")
+                {
+                    adminView aV = new adminView();
+                    aV.Show();
+                    this.Close();
+                }
+            }
         }
     }
 }
