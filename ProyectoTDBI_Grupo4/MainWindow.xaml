@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Login" Height="450" Width="340">
     <Grid>
+        <Label Content="Login" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <Label Content="Usuario" HorizontalAlignment="Left" Margin="43,150,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbUsuario" HorizontalAlignment="Left" Margin="50,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="50,260,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="43,229,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btInicioSesion" Content="Iniciar sesión" HorizontalAlignment="Center" Margin="0,344,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
