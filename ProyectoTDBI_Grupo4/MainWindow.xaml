@@ -5,14 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="340">
-    <Grid>
-        <Label Content="Login" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
-        <Label Content="Usuario" HorizontalAlignment="Left" Margin="43,150,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbUsuario" HorizontalAlignment="Left" Margin="50,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="50,260,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="43,229,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btInicioSesion" Content="Iniciar sesión" HorizontalAlignment="Center" Margin="0,344,0,0" VerticalAlignment="Top"/>
+        Title="Login" Height="332" Width="340">
+    <Grid Height="321" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="" HorizontalAlignment="Left" Margin="71,22,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Grid.Column="1"/>
+        <Label Content="Usuario" HorizontalAlignment="Left" Margin="51,76,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="51,177,0,0" VerticalAlignment="Top" Width="238" Height="27" Grid.ColumnSpan="2"/>
+        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="51,146,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button x:Name="btInicioSesion" Content="Iniciar sesión" HorizontalAlignment="Left" Margin="66,261,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <PasswordBox x:Name="pbPassword_Copy" HorizontalAlignment="Left" Margin="51,107,0,0" VerticalAlignment="Top" Width="238" Height="27" Grid.ColumnSpan="2"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="60,31,0,0" Text="Login&#xD;&#xA;" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" FontFamily="Arial Black" FontSize="25"/>
 
     </Grid>
 </Window>
