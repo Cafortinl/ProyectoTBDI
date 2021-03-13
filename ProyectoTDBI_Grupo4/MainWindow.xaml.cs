@@ -40,6 +40,35 @@ namespace ProyectoTDBI_Grupo4
                     this.Close();
                 }
             }
+            if(Usuario == "ServClien")
+            {
+                if(Contra == "123")
+                {
+                    ServicioCliente sc = new ServicioCliente();
+                    sc.Show();
+                    this.Close();
+                }
+            }
+            if(Usuario == "callCent")
+            {
+                if(Contra == "123")
+                {
+                    CallCenter cc = new CallCenter();
+                    cc.Show();
+                    this.Close();
+                }
+            }
+            if(Usuario == "almacen")
+            {
+                if(Contra == "123")
+                {
+                    Bodega bd = new Bodega();
+                    bd.Show();
+                    this.Close();
+                }
+            }
+            tbUsuario.Text = "";
+            tbContra.Password = "";
         }
     }
 }
