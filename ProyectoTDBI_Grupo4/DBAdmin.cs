@@ -5,14 +5,15 @@ using Npgsql;
 
 namespace ProyectoTDBI_Grupo4
 {
-    class DB
+    class DBAdmin
     {
         private NpgsqlConnection conn;
         private NpgsqlCommand cmd;
         private NpgsqlDataReader dr;
-        public DB(string connString)
+        public DBAdmin(string connString)
         {
             conn = new NpgsqlConnection(connString);
+            Console.WriteLine("Conected");
         }
 
         public void open()
@@ -33,5 +34,10 @@ namespace ProyectoTDBI_Grupo4
             return dr = cmd.ExecuteReader();
         }
         
+        public NpgsqlConnection getConn()
+        {
+            return conn;
+        }
+
     }
 }
