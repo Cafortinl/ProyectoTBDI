@@ -53,59 +53,66 @@ namespace ProyectoTDBI_Grupo4
             try
             {
                 dba.open();
-                //dba.defineQuery("SELECT 1 FROM pg_roles WHERE rolname='" + Usuario + "'");
-                //NpgsqlDataReader dr = dba.executeQuery();
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter("SELECT 1 FROM pg_roles WHERE rolname='administrador'", dba.getConn());
-                ds.Reset();
-                da.Fill(ds);
-                dt = ds.Tables[0];
-                dg.DataContext = dt;
-                //MessageBox.Show(dt[0].ToString());
+                dba.defineQuery("SELECT 1 FROM pg_roles WHERE rolname='" + Usuario + "'");
+                NpgsqlDataReader dr = dba.executeQuery();
+                if (dr.HasRows)
+                {
+                    if (Usuario == "administrador")
+                    {
+                        if (Contra == "AdminTDBI")
+                        {
+                            adminView aV = new adminView();
+                            aV.Show();
+                            this.Close();
+                        }
+                        else
+                            MessageBox.Show("Contraseña incorrecta");
+                    }
+                    else if (Usuario == "ServClien")
+                    {
+                        if (Contra == "SCTDBI")
+                        {
+                            ServicioCliente sc = new ServicioCliente();
+                            sc.Show();
+                            this.Close();
+                        }
+                        else
+                            MessageBox.Show("Contraseña incorrecta");
+                    }
+                    else if (Usuario == "callCent")
+                    {
+                        if (Contra == "cCTDBI")
+                        {
+                            CallCenter cc = new CallCenter();
+                            cc.Show();
+                            this.Close();
+                        }
+                        else
+                            MessageBox.Show("Contraseña incorrecta");
+                    }
+                    else if (Usuario == "almacen")
+                    {
+                        if (Contra == "bodegaTDBI")
+                        {
+                            Bodega bd = new Bodega();
+                            bd.Show();
+                            this.Close();
+                        }
+                        else
+                            MessageBox.Show("Contraseña incorrecta");
+                    }
+                }
+                else
+                    MessageBox.Show("El usuario ingresado no se encuentra en la base de datos. Intentelo de nuevo.");
                 dba.close();
             }catch(Exception msg)
             {
                 MessageBox.Show(msg.ToString());
                 throw;
             }
-
-            /*if (Usuario == "admin")
-            {
-                if (Contra == "123")
-                {
-                    adminView aV = new adminView();
-                    aV.Show();
-                    this.Close();
-                }
-            }
-            if(Usuario == "ServClien")
-            {
-                if(Contra == "123")
-                {
-                    ServicioCliente sc = new ServicioCliente();
-                    sc.Show();
-                    this.Close();
-                }
-            }
-            if(Usuario == "callCent")
-            {
-                if(Contra == "123")
-                {
-                    CallCenter cc = new CallCenter();
-                    cc.Show();
-                    this.Close();
-                }
-            }
-            if(Usuario == "almacen")
-            {
-                if(Contra == "123")
-                {
-                    Bodega bd = new Bodega();
-                    bd.Show();
-                    this.Close();
-                }
-            }*/
             tbUsuario.Text = "";
             tbContra.Password = "";
         }
+
     }
 }

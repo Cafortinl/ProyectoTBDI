@@ -18,7 +18,7 @@
         <Button x:Name="btInicioSesion" Content="Iniciar sesión" HorizontalAlignment="Left" Margin="66,261,0,0" VerticalAlignment="Top" Grid.Column="1" Click="btInicioSesion_Click"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="60,31,0,0" Text="Login&#xD;&#xA;" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" FontFamily="Arial Black" FontSize="25"/>
         <TextBox x:Name="tbUsuario" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="27" Margin="51,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
-        <DataGrid x:Name="dg" Grid.Column="1" Margin="190,0,23,0"/>
+        <TextBlock x:Name="tbOutput" Grid.Column="1" HorizontalAlignment="Left" Margin="234,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="290" Width="269"/>
 
     </Grid>
 </Window>
