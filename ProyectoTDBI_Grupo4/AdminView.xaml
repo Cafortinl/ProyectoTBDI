@@ -8,8 +8,8 @@
         Title="Administración" Height="340" Width="659">
     <Grid Margin="0,0,10,27">
         <Label Content="Tabla actual" HorizontalAlignment="Left" Margin="21,20,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbTablaSelec" HorizontalAlignment="Left" Margin="21,46,0,0" VerticalAlignment="Top" Width="120"/>
-        <DataGrid Margin="160,46,21,10"/>
+        <ComboBox x:Name="cbTablaSelec" HorizontalAlignment="Left" Margin="21,46,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbTablaSelec_SelectionChanged"/>
+        <DataGrid x:Name="dgInfo" Margin="160,46,21,10"/>
         <Button x:Name="btAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="54,96,0,0" VerticalAlignment="Top" Width="54"/>
         <Button x:Name="btModificar" Content="Modificar" HorizontalAlignment="Left" Margin="54,147,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="54,198,0,0" VerticalAlignment="Top" Width="54"/>

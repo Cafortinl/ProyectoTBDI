@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="CallCenter" Height="523" Width="742">
     <Grid Margin="0,0,0,-6">
-        <DataGrid x:Name="DataGrid_Clientes" Margin="23,43,277,34" AutomationProperties.Name="TablaDatosClientes" SelectionChanged="DataGrid_Clientes_SelectionChanged"/>
+        <DataGrid x:Name="DataGrid_Clientes" Margin="23,43,277,34" AutomationProperties.Name="TablaDatosClientes"/>
         <Label Content="N°  Orden:" HorizontalAlignment="Left" Margin="497,119,0,0" VerticalAlignment="Top"/>
         <Label Content="Nombre Remitente:" HorizontalAlignment="Left" Margin="498,250,0,0" VerticalAlignment="Top"/>
         <Label Content="Empresa Envio:" HorizontalAlignment="Left" Margin="498,313,0,0" VerticalAlignment="Top"/>

@@ -20,6 +20,7 @@ namespace ProyectoTDBI_Grupo4
         public adminView()
         {
             InitializeComponent();
+            List<string> tablas = new List<string> {"Almacen", "Categoria", "Cliente", "Contrato", "DetalleFactura", "Factura", "Inventario", "Orden", "Producto", "Tienda", "TieneEnCarrito"};
         }
 
         private void btLogoff_Click(object sender, RoutedEventArgs e)
@@ -34,7 +35,7 @@ namespace ProyectoTDBI_Grupo4
             switch (cbTablaSelec.SelectedItem)
             {
                 case "Almacen":
-
+                    //dgInfo.
                     break;
                 case "Categoria":
                     break;
@@ -58,5 +59,6 @@ namespace ProyectoTDBI_Grupo4
                     break;
             }
         }
+
     }
 }
