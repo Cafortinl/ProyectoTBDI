@@ -72,7 +72,7 @@ namespace ProyectoTDBI_Grupo4
                         {
                             ServicioCliente sc = new ServicioCliente();
                             sc.Show();
-                            this.Hide()
+                            this.Hide();
                         }
                         else
                             MessageBox.Show("Contraseña incorrecta");

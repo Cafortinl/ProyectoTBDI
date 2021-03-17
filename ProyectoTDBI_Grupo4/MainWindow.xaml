@@ -8,8 +8,9 @@
         Title="Login" Height="330" Width="352">
     <Grid Height="300" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="227*"/>
+            <ColumnDefinition Width="55*"/>
         </Grid.ColumnDefinitions>
         <Label Content="" HorizontalAlignment="Left" Margin="71,22,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Grid.Column="1"/>
         <Label Content="Usuario" HorizontalAlignment="Left" Margin="51,76,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
