@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="CallCenter" Height="450" Width="800">
-    <Grid>
-        
+        Title="CallCenter" Height="523" Width="742">
+    <Grid Margin="0,0,0,-6">
+        <DataGrid x:Name="DataGrid_Clientes" Margin="23,43,277,34" AutomationProperties.Name="TablaDatosClientes" SelectionChanged="DataGrid_Clientes_SelectionChanged"/>
+        <Label Content="N°  Orden:" HorizontalAlignment="Left" Margin="497,119,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nombre Remitente:" HorizontalAlignment="Left" Margin="498,250,0,0" VerticalAlignment="Top"/>
+        <Label Content="Empresa Envio:" HorizontalAlignment="Left" Margin="498,313,0,0" VerticalAlignment="Top"/>
+        <Label Content="Direccion Envio:" HorizontalAlignment="Left" Margin="498,374,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.561,-1.076"/>
+        <Label Content="N° Seguimiento:" HorizontalAlignment="Left" Margin="498,188,0,0" VerticalAlignment="Top"/>
+        <Label Content="ID Cliente:" HorizontalAlignment="Left" Margin="498,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.508,1.884">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.462"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.263"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="Cll_nOrden" HorizontalAlignment="Left" Margin="498,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_nOrden"/>
+        <TextBox x:Name="Cll_nRemitente" HorizontalAlignment="Left" Margin="498,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_nombreRemitente"/>
+        <TextBox x:Name="Cll_EmpresaEnvio" HorizontalAlignment="Left" Margin="498,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_empresaEnvio"/>
+        <TextBox x:Name="Cll_DirreccionEnvio" HorizontalAlignment="Left" Margin="498,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_DireccionEnvio"/>
+        <TextBox x:Name="Cll_nSeguimiento" HorizontalAlignment="Left" Margin="498,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_nSeguimiento"/>
+        <TextBox x:Name="Cll_idCliente" HorizontalAlignment="Left" Margin="498,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_idCliente"/>
+        <Button x:Name="Cll_BtCompra" Content="Comprar" HorizontalAlignment="Left" Margin="498,449,0,0" VerticalAlignment="Top" Width="210" Height="30" Click="Cll_BtCompra_Click"/>
+
     </Grid>
 </Window>
