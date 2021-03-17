@@ -5,17 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="adminView" Height="316" Width="717">
-    <Grid>
-        <Button x:Name="tbAgregar" Content="Button" HorizontalAlignment="Left" Margin="49,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.451,0.602"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="48,0,0,0" VerticalAlignment="Center"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="49,205,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="136,0,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Center" Width="261" Height="149"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="247,230,0,0" VerticalAlignment="Top"/>
-        <Label Content="Menú" HorizontalAlignment="Left" Margin="48,40,0,0" VerticalAlignment="Top"/>
-        <Label Content="Consola" HorizontalAlignment="Left" Margin="136,40,0,0" VerticalAlignment="Top"/>
-        <DataGrid Margin="416,76,10,74"/>
-        <Label Content="Salida" HorizontalAlignment="Left" Margin="416,40,0,0" VerticalAlignment="Top"/>
-
+        Title="Administración" Height="340" Width="659">
+    <Grid Margin="0,0,10,27">
+        <Label Content="Tabla actual" HorizontalAlignment="Left" Margin="21,20,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbTablaSelec" HorizontalAlignment="Left" Margin="21,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <DataGrid Margin="160,46,21,10"/>
+        <Button x:Name="btAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="54,96,0,0" VerticalAlignment="Top" Width="54"/>
+        <Button x:Name="btModificar" Content="Modificar" HorizontalAlignment="Left" Margin="54,147,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="54,198,0,0" VerticalAlignment="Top" Width="54"/>
+        <Button x:Name="btLogoff" Content="Cerrar sesión" HorizontalAlignment="Left" Margin="555,13,0,0" VerticalAlignment="Top" Click="btLogoff_Click"/>
     </Grid>
 </Window>

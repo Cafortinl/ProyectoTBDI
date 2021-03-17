@@ -61,7 +61,7 @@ namespace ProyectoTDBI_Grupo4
                         {
                             adminView aV = new adminView();
                             aV.Show();
-                            this.Close();
+                            this.Hide();
                         }
                         else
                             MessageBox.Show("Contraseña incorrecta");
@@ -72,7 +72,7 @@ namespace ProyectoTDBI_Grupo4
                         {
                             ServicioCliente sc = new ServicioCliente();
                             sc.Show();
-                            this.Close();
+                            this.Hide()
                         }
                         else
                             MessageBox.Show("Contraseña incorrecta");
@@ -83,7 +83,7 @@ namespace ProyectoTDBI_Grupo4
                         {
                             CallCenter cc = new CallCenter();
                             cc.Show();
-                            this.Close();
+                            this.Hide();
                         }
                         else
                             MessageBox.Show("Contraseña incorrecta");
@@ -94,7 +94,7 @@ namespace ProyectoTDBI_Grupo4
                         {
                             Bodega bd = new Bodega();
                             bd.Show();
-                            this.Close();
+                            this.Hide();
                         }
                         else
                             MessageBox.Show("Contraseña incorrecta");

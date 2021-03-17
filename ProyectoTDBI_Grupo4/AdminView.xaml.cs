@@ -21,5 +21,12 @@ namespace ProyectoTDBI_Grupo4
         {
             InitializeComponent();
         }
+
+        private void btLogoff_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            MainWindow mw = new MainWindow();
+            mw.Show();
+        }
     }
 }
