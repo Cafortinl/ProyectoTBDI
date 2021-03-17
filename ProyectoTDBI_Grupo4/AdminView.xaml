@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="adminView" Height="450" Width="800">
+        Title="adminView" Height="316" Width="717">
     <Grid>
-        
+        <Button x:Name="tbAgregar" Content="Button" HorizontalAlignment="Left" Margin="49,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.451,0.602"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="48,0,0,0" VerticalAlignment="Center"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="49,205,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="136,0,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Center" Width="261" Height="149"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="247,230,0,0" VerticalAlignment="Top"/>
+        <Label Content="Menú" HorizontalAlignment="Left" Margin="48,40,0,0" VerticalAlignment="Top"/>
+        <Label Content="Consola" HorizontalAlignment="Left" Margin="136,40,0,0" VerticalAlignment="Top"/>
+        <DataGrid Margin="416,76,10,74"/>
+        <Label Content="Salida" HorizontalAlignment="Left" Margin="416,40,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

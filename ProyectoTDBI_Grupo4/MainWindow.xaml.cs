@@ -44,8 +44,6 @@ namespace ProyectoTDBI_Grupo4
                     User,
                     Password);
             DBAdmin dba = new DBAdmin(connString);
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
             
             String Usuario = tbUsuario.Text;
             String Contra = tbContra.Password;
@@ -59,7 +57,7 @@ namespace ProyectoTDBI_Grupo4
                 {
                     if (Usuario == "administrador")
                     {
-                        if (Contra == "AdminTDBI")
+                        if (Contra == "1234")
                         {
                             adminView aV = new adminView();
                             aV.Show();
@@ -68,9 +66,9 @@ namespace ProyectoTDBI_Grupo4
                         else
                             MessageBox.Show("Contraseña incorrecta");
                     }
-                    else if (Usuario == "ServClien")
+                    else if (Usuario == "Servicio Cliente")
                     {
-                        if (Contra == "SCTDBI")
+                        if (Contra == "1234")
                         {
                             ServicioCliente sc = new ServicioCliente();
                             sc.Show();
@@ -79,9 +77,9 @@ namespace ProyectoTDBI_Grupo4
                         else
                             MessageBox.Show("Contraseña incorrecta");
                     }
-                    else if (Usuario == "callCent")
+                    else if (Usuario == "Call Center")
                     {
-                        if (Contra == "cCTDBI")
+                        if (Contra == "1234")
                         {
                             CallCenter cc = new CallCenter();
                             cc.Show();
