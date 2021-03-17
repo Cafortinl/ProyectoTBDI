@@ -90,7 +90,7 @@ namespace ProyectoTDBI_Grupo4
                     }
                     else if (Usuario == "almacen")
                     {
-                        if (Contra == "bodegaTDBI")
+                        if (Contra == "1234")
                         {
                             Bodega bd = new Bodega();
                             bd.Show();
