@@ -28,5 +28,35 @@ namespace ProyectoTDBI_Grupo4
             MainWindow mw = new MainWindow();
             mw.Show();
         }
+
+        private void cbTablaSelec_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (cbTablaSelec.SelectedItem)
+            {
+                case "Almacen":
+
+                    break;
+                case "Categoria":
+                    break;
+                case "Cliente":
+                    break;
+                case "Contrato":
+                    break;
+                case "DetalleFactura":
+                    break;
+                case "Factura":
+                    break;
+                case "Inventario":
+                    break;
+                case "Orden":
+                    break;
+                case "Producto":
+                    break;
+                case "Tienda":
+                    break;
+                case "TieneEnCarrito":
+                    break;
+            }
+        }
     }
 }
