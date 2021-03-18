@@ -6,8 +6,8 @@ namespace ProyectoTDBI_Grupo4
 {
     class Almacen
     {
-        private int codigoAlmacen;
-        private string ciudad;
+        public int codigoAlmacen { get; set; }
+        public string ciudad { get; set; }
         
         public Almacen(int cod, string ciu)
         {
@@ -15,22 +15,22 @@ namespace ProyectoTDBI_Grupo4
             ciudad = ciu;
         }
 
-        public void setCodigoAlmacen(int x)
+        public void SetCodigoAlmacen(int x)
         {
             codigoAlmacen = x;
         }
 
-        public int getCodigoAlmacen()
+        public int GetCodigoAlmacen()
         {
             return codigoAlmacen;
         }
 
-        public void setCiudad(string x)
+        public void SetCiudad(string x)
         {
             ciudad = x;
         }
 
-        public string getCiudad()
+        public string GetCiudad()
         {
             return ciudad;
         }

@@ -6,10 +6,10 @@ namespace ProyectoTDBI_Grupo4
 {
     class Inventario
     {
-        private int codigoTienda;
-        private int codigoAlmacen;
-        private int idProducto;
-        private int cantidadInventario;
+        public int codigoTienda { get; set; }
+        public int codigoAlmacen { get; set; }
+        public int idProducto { get; set; }
+        public int cantidadInventario { get; set; }
 
         public Inventario(int t, int a, int p, int c)
         {
@@ -17,46 +17,6 @@ namespace ProyectoTDBI_Grupo4
             codigoAlmacen = a;
             idProducto = p;
             cantidadInventario = c;
-        }
-
-        public void setTienda(int x)
-        {
-            codigoTienda = x;
-        }
-
-        public int getTienda()
-        {
-            return codigoTienda;
-        }
-
-        public void setAlmacen(int x)
-        {
-            codigoAlmacen = x;
-        }
-
-        public int getAlmacen()
-        {
-            return codigoAlmacen;
-        }
-
-        public void setProducto(int x)
-        {
-            idProducto = x;
-        }
-
-        public int getProducto()
-        {
-            return idProducto;
-        }
-
-        public void setCant(int x)
-        {
-            cantidadInventario = x;
-        }
-
-        public int getCant()
-        {
-            return cantidadInventario;
         }
 
     }

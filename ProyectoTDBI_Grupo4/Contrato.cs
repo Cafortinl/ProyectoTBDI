@@ -6,9 +6,9 @@ namespace ProyectoTDBI_Grupo4
 {
     class Contrato
     {
-        private int noCuenta;
-        private double cuota;
-        private int idCliente;
+        public int noCuenta { get; set; }
+        public double cuota { get; set; }
+        public int idCliente { get; set; }
 
         public Contrato(int cue, double cuo, int cli)
         {
@@ -17,35 +17,5 @@ namespace ProyectoTDBI_Grupo4
             idCliente = cli;
         }
 
-        public void setCuenta(int x)
-        {
-            noCuenta = x;
-        }
-
-        public int getCuenta()
-        {
-            return noCuenta;
-        }
-
-        public void setCuota(double x)
-        {
-            cuota = x;
-        }
-
-        public double getCuota()
-        {
-            return cuota;
-        }
-
-
-        public void setCliente(int x)
-        {
-            idCliente = x;
-        }
-
-        public int getCliente()
-        {
-            return idCliente;
-        }
     }
 }
