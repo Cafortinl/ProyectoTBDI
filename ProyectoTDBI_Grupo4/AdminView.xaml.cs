@@ -72,7 +72,7 @@ namespace ProyectoTDBI_Grupo4
                     break;
                 case "Cliente":
                     List<Cliente> infoClien = new List<Cliente>();
-                    dba.defineQuery("SELECT * FROM clientes");
+                    dba.defineQuery("SELECT * FROM cliente");
                     dr = dba.executeQuery();
                     while (dr.Read())
                     {
@@ -92,7 +92,7 @@ namespace ProyectoTDBI_Grupo4
                     break;
                 case "DetalleFactura":
                     List<DetalleFactura> infoDetFac = new List<DetalleFactura>();
-                    dba.defineQuery("SELECT * FROM detalleFactura");
+                    dba.defineQuery("SELECT * FROM \"detalleFactura\"");
                     dr = dba.executeQuery();
                     while (dr.Read())
                     {
@@ -152,7 +152,7 @@ namespace ProyectoTDBI_Grupo4
                     break;
                 case "TieneEnCarrito":
                     List<TieneEnCarrito> infoCarr = new List<TieneEnCarrito>();
-                    dba.defineQuery("SELECT * FROM tieneEnCarrito");
+                    dba.defineQuery("SELECT * FROM \"tieneEnCarrito\"");
                     dr = dba.executeQuery();
                     while (dr.Read())
                     {
