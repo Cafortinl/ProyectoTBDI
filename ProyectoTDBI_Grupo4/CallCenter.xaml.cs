@@ -78,18 +78,7 @@ namespace ProyectoTDBI_Grupo4
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            List<Cliente> infoClien = new List<Cliente>();
-            dba.defineQuery("SELECT * FROM cliente");
-            dr = dba.executeQuery();
-            if (dr.HasRows)
-            {
-                while (dr.Read())
-                {
-                    infoClien.Add(new Cliente(dr.GetInt32(0), dr.GetString(1), dr.GetBoolean(2), dr.GetBoolean(3), dr.GetString(4), dr.GetString(5), dr.GetString(6), dr.GetInt32(7), dr.GetString(8), dr.GetInt32(9), dr.GetInt32(10), dr.GetInt32(11)));
-                }
-                DataGrid_Clientes.ItemsSource = infoClien;
-
-            }
+         
         }
     }
 }
