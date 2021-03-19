@@ -39,19 +39,6 @@ namespace ProyectoTDBI_Grupo4
         public CallCenter()
         {
             InitializeComponent();
-            
-        }
-
-        private void Cll_BtCompra_Click(object sender, RoutedEventArgs e)
-        {
-
-            int idCliente = Convert.ToInt32(Cll_idCliente.Text);
-            int nOrden = Convert.ToInt32(Cll_nOrden.Text);
-            int nSeguimiento = Convert.ToInt32(Cll_nSeguimiento.Text);
-            string nombreRemitente = Cll_nRemitente.Text;
-            string empresaEnvio = Cll_EmpresaEnvio.Text;
-            string DireccionEnvio = Cll_DirreccionEnvio.Text;
-            Orden compra = new Orden(nOrden, nombreRemitente, empresaEnvio, DireccionEnvio, nSeguimiento, idCliente);
             try
             {
                 NpgsqlDataReader dr;
@@ -72,13 +59,36 @@ namespace ProyectoTDBI_Grupo4
                 MessageBox.Show(msg.ToString());
                 throw;
             }
-
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Cll_BtCompra_Click(object sender, RoutedEventArgs e)
         {
+            NpgsqlDataReader dr;
+            dba.open();
+            MessageBox.Show("vamos");
+            int idCliente = Convert.ToInt32(Cll_idCliente.Text);
+            int nOrden = Convert.ToInt32(Cll_nOrden.Text);
+            int nSeguimiento = Convert.ToInt32(Cll_nSeguimiento.Text);
+            string nombreRemitente = Cll_nRemitente.Text;
+            string empresaEnvio = Cll_EmpresaEnvio.Text;
+            string DireccionEnvio = Cll_DirreccionEnvio.Text;
+            Orden compra = new Orden(nOrden, nombreRemitente, empresaEnvio, DireccionEnvio, nSeguimiento, idCliente);
+            MessageBox.Show("vamos2");
+
+            string query= "INSERT INTO \"orden\" VALUES " + nOrden+",'"+nombreRemitente+"','"+empresaEnvio+"','"+DireccionEnvio+"',"+nSeguimiento+","+idCliente+")";
+            NpgsqlCommand ejecutor = new NpgsqlCommand(query, dba.getConn());
+            ejecutor.ExecuteNonQuery();
+            MessageBox.Show("vamos3");
+            List<Orden> listaOrden = new List<Orden>();
+            dba.defineQuery("SELECT * FROM orden");
+            dr = dba.executeQuery();
+            while (dr.Read())
+            {
+                listaOrden.Add(new Orden(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5)));
+            }
             
-         
+            DataGrid_Orden.ItemsSource = listaOrden;
+            MessageBox.Show("vamos4");
         }
     }
 }

@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="CallCenter" Height="523" Width="742">
-    <Grid Margin="0,-20,0,-6" HorizontalAlignment="Center" Width="742">
+        Title="CallCenter" Height="523" Width="941">
+    <Grid Margin="0,-20,0,-6" HorizontalAlignment="Center" Width="941">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="101*"/>
             <ColumnDefinition Width="641*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="N°  Orden:" HorizontalAlignment="Left" Margin="396,119,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="Nombre Remitente:" HorizontalAlignment="Left" Margin="397,250,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="Empresa Envio:" HorizontalAlignment="Left" Margin="397,313,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="Direccion Envio:" HorizontalAlignment="Left" Margin="397,374,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.561,-1.076" Grid.Column="1"/>
-        <Label Content="N° Seguimiento:" HorizontalAlignment="Left" Margin="397,188,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label Content="ID Cliente:" HorizontalAlignment="Left" Margin="397,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.508,1.884" Grid.Column="1">
+        <Label Content="N°  Orden:" HorizontalAlignment="Center" Margin="0,340,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nombre Remitente:" HorizontalAlignment="Left" Margin="171,272,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Empresa Envio:" HorizontalAlignment="Left" Margin="171,340,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Direccion Envio:" HorizontalAlignment="Left" Margin="171,407,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.561,-1.076" Grid.Column="1"/>
+        <Label Content="N° Seguimiento:" HorizontalAlignment="Left" Margin="31,409,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Content="ID Cliente:" HorizontalAlignment="Center" Margin="0,272,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.508,1.884">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -26,15 +26,15 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="Cll_nOrden" HorizontalAlignment="Left" Margin="397,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_nOrden" Grid.Column="1"/>
-        <TextBox x:Name="Cll_nRemitente" HorizontalAlignment="Left" Margin="397,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_nombreRemitente" Grid.Column="1"/>
-        <TextBox x:Name="Cll_EmpresaEnvio" HorizontalAlignment="Left" Margin="397,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_empresaEnvio" Grid.Column="1"/>
-        <TextBox x:Name="Cll_DirreccionEnvio" HorizontalAlignment="Left" Margin="397,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_DireccionEnvio" Grid.Column="1"/>
-        <TextBox x:Name="Cll_nSeguimiento" HorizontalAlignment="Left" Margin="397,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_nSeguimiento" Grid.Column="1"/>
-        <TextBox x:Name="Cll_idCliente" HorizontalAlignment="Left" Margin="397,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_idCliente" Grid.Column="1"/>
-        <Button x:Name="Cll_BtCompra" Content="Comprar" HorizontalAlignment="Left" Margin="397,449,0,0" VerticalAlignment="Top" Width="210" Height="30" Click="Cll_BtCompra_Click" Grid.Column="1"/>
-        <DataGrid x:Name="DataGrid_Clientes" Margin="10,132,301,194" RowHeight="30" ColumnWidth="100" Grid.ColumnSpan="2"/>
-        <Button Content="DALE CLICK PARA SER FELIZ &#xD;&#xA;" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Click="Button_Click" Width="431" Grid.ColumnSpan="2" Height="51"/>
+        <TextBox x:Name="Cll_nOrden" HorizontalAlignment="Left" Margin="31,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_nOrden" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Cll_nRemitente" HorizontalAlignment="Left" Margin="171,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_nombreRemitente" Grid.Column="1"/>
+        <TextBox x:Name="Cll_EmpresaEnvio" HorizontalAlignment="Left" Margin="171,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_empresaEnvio" Grid.Column="1"/>
+        <TextBox x:Name="Cll_DirreccionEnvio" HorizontalAlignment="Left" Margin="171,438,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_DireccionEnvio" Grid.Column="1"/>
+        <TextBox x:Name="Cll_nSeguimiento" HorizontalAlignment="Left" Margin="31,438,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_nSeguimiento" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Cll_idCliente" HorizontalAlignment="Left" Margin="31,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="27" AutomationProperties.Name="Cll_idCliente" Grid.ColumnSpan="2"/>
+        <Button x:Name="Cll_BtCompra" Content="Comprar" HorizontalAlignment="Left" Margin="31,484,0,0" VerticalAlignment="Top" Width="478" Height="27" Click="Cll_BtCompra_Click" Grid.ColumnSpan="2"/>
+        <DataGrid x:Name="DataGrid_Clientes" Margin="28,45,31,281" RowHeight="30" ColumnWidth="100" Grid.ColumnSpan="2"/>
+        <DataGrid x:Name="DataGrid_Orden" Margin="407,285,31,22" RowHeight="30" ColumnWidth="100" Grid.Column="1"/>
 
     </Grid>
 </Window>
