@@ -79,6 +79,7 @@ namespace ProyectoTDBI_Grupo4
                         infoClien.Add(new Cliente(dr.GetInt32(0), dr.GetString(1), dr.GetBoolean(2), dr.GetBoolean(3), dr.GetString(4), dr.GetString(5), dr.GetString(6), dr.GetInt32(7), dr.GetString(8), dr.GetInt32(9), dr.GetInt32(10), dr.GetInt32(11)));
                     }
                     dgInfo.ItemsSource = infoClien;
+
                     break;
                 case "Contrato":
                     List<Contrato> infoContrat = new List<Contrato>();

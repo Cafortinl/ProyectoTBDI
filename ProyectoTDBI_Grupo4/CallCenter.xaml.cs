@@ -21,30 +21,30 @@ namespace ProyectoTDBI_Grupo4
     /// </summary>
     public partial class CallCenter : Window
     {
+        private static string Host = "proyectotdbi.ce6kih4lqvgw.us-east-1.rds.amazonaws.com";
+        private static string User = "administrador";
+        private static string DBname = "ProyectoTDBI";
+        private static string Port = "5432";
+        private static string Password = "AdM1n_Pr0yect0#1";
+        private static string connString =
+        String.Format(
+                "Server={0};Port={1};Database={2};User Id={3};Password={4};",
+                Host,
+                Port,
+                DBname,
+                User,
+                Password);
+        private static DBAdmin dba = new DBAdmin(connString);
 
-        
         public CallCenter()
         {
             InitializeComponent();
+            
         }
 
         private void Cll_BtCompra_Click(object sender, RoutedEventArgs e)
         {
-            
-            string Host = "proyectotdbi.ce6kih4lqvgw.us-east-1.rds.amazonaws.com";
-            string User = "administrador";
-            string DBname = "ProyectoTDBI";
-            string Port = "5432";
-            string Password = "AdM1n_Pr0yect0#1";
-            string connString =
-            String.Format(
-                    "Server={0};Port={1};Database={2};User Id={3};Password={4};",
-                    Host,
-                    Port,
-                    DBname,
-                    User,
-                    Password);
-            DBAdmin dba = new DBAdmin(connString);
+
             int idCliente = Convert.ToInt32(Cll_idCliente.Text);
             int nOrden = Convert.ToInt32(Cll_nOrden.Text);
             int nSeguimiento = Convert.ToInt32(Cll_nSeguimiento.Text);
@@ -54,19 +54,18 @@ namespace ProyectoTDBI_Grupo4
             Orden compra = new Orden(nOrden, nombreRemitente, empresaEnvio, DireccionEnvio, nSeguimiento, idCliente);
             try
             {
+                NpgsqlDataReader dr;
                 dba.open();
-                dba.defineQuery("SELECT * FROM Clientes");
-                NpgsqlDataReader dr = dba.executeQuery();
-                if (dr.HasRows)
+                List<Cliente> infoClien = new List<Cliente>();
+                dba.defineQuery("SELECT * FROM cliente");
+                dr = dba.executeQuery();
+                while (dr.Read())
                 {
-                    string query = "INSERT INTO orden(noOrden,nombreRemitente,empresaEnvio,direccionEnvio,noSeguimiento,idCliente) VALUES (@noOrden,@nombreRemitente,@empresaEnvio,@direccionEnvio,@noSeguimiento,@idCliente)";
-                    
-
-
+                    infoClien.Add(new Cliente(dr.GetInt32(0), dr.GetString(1), dr.GetBoolean(2), dr.GetBoolean(3), dr.GetString(4), dr.GetString(5), dr.GetString(6), dr.GetInt32(7), dr.GetString(8), dr.GetInt32(9), dr.GetInt32(10), dr.GetInt32(11)));
                 }
-                else
-                MessageBox.Show("Esta vacio");
-                dba.close();
+                DataGrid_Clientes.ItemsSource = infoClien;
+
+
             }
             catch (Exception msg)
             {
@@ -74,6 +73,23 @@ namespace ProyectoTDBI_Grupo4
                 throw;
             }
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            List<Cliente> infoClien = new List<Cliente>();
+            dba.defineQuery("SELECT * FROM cliente");
+            dr = dba.executeQuery();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    infoClien.Add(new Cliente(dr.GetInt32(0), dr.GetString(1), dr.GetBoolean(2), dr.GetBoolean(3), dr.GetString(4), dr.GetString(5), dr.GetString(6), dr.GetInt32(7), dr.GetString(8), dr.GetInt32(9), dr.GetInt32(10), dr.GetInt32(11)));
+                }
+                DataGrid_Clientes.ItemsSource = infoClien;
+
+            }
         }
     }
 }
