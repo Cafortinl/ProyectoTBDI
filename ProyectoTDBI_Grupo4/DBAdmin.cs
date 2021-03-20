@@ -29,6 +29,13 @@ namespace ProyectoTDBI_Grupo4
             cmd = new NpgsqlCommand(query, conn);
         }
 
+        public void clearQuery()
+        {
+            cmd = null;
+            dr.Close();
+            dr = null;
+        }
+
         public NpgsqlDataReader executeQuery()
         {
             return dr = cmd.ExecuteReader();

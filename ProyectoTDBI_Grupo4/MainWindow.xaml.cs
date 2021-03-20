@@ -51,61 +51,44 @@ namespace ProyectoTDBI_Grupo4
             try
             {
                 dba.open();
-                dba.defineQuery("SELECT 1 FROM pg_roles WHERE rolname='" + Usuario + "'");
+                dba.defineQuery("SELECT 1 FROM usuarios WHERE usuario='" + Usuario + "'");
                 NpgsqlDataReader dr = dba.executeQuery();
                 if (dr.HasRows)
                 {
-                    if (Usuario == "administrador")
+                    dba.clearQuery();
+                    dr = null;
+                    dba.defineQuery("SELECT tipo FROM usuarios WHERE usuario='" + Usuario + "' AND password='" + Contra + "'");
+                    dr = dba.executeQuery();
+                    if (dr.HasRows)
                     {
-                        if (Contra == "1234")
+                        dr.Read();
+                        int tipo = dr.GetInt32(0);
+                        switch (tipo)
                         {
-                            adminView aV = new adminView();
-                            aV.Show();
+                            case 1:
+                                adminView aV = new adminView();
+                                aV.Show();
+                                break;
+                            case 2:
+                                ServicioCliente sc = new ServicioCliente();
+                                sc.Show();
+                                break;
+                            case 3:
+                                CallCenter cc = new CallCenter();
+                                cc.Show();
+                                break;
+                            case 4:
+                                Bodega bd = new Bodega();
+                                bd.Show();
+                                break;
+                            case 5:
+                                VistaCliente vc = new VistaCliente(Usuario);
+                                vc.Show();
+                                break;
                         }
-                        else
-                            MessageBox.Show("Contraseña incorrecta");
                     }
-                    else if (Usuario == "Servicio Cliente")
-                    {
-                        if (Contra == "1234")
-                        {
-                            ServicioCliente sc = new ServicioCliente();
-                            sc.Show();
-                        }
-                        else
-                            MessageBox.Show("Contraseña incorrecta");
-                    }
-                    else if (Usuario == "Call Center")
-                    {
-                        if (Contra == "1234")
-                        {
-                            CallCenter cc = new CallCenter();
-                            cc.Show();
-                        }
-                        else
-                            MessageBox.Show("Contraseña incorrecta");
-                    }
-                    else if (Usuario == "almacen")
-                    {
-                        if (Contra == "1234")
-                        {
-                            Bodega bd = new Bodega();
-                            bd.Show();
-                        }
-                        else
-                            MessageBox.Show("Contraseña incorrecta");
-                    }
-                    else if (Usuario == "Cliente")
-                    {
-                        if (Contra == "1234")
-                        {
-                            
-                            VistaCliente bd = new VistaCliente("merv");
-                            bd.Show();
-                        }
-                        else
-                            MessageBox.Show("Contraseña incorrecta");
-                    }
+                    else
+                        MessageBox.Show("El usuario o la contraseña ingresada son incorrectos. Intentelo de nuevo");
                 }
                 else
                     MessageBox.Show("El usuario ingresado no se encuentra en la base de datos. Intentelo de nuevo.");
