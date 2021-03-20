@@ -182,43 +182,50 @@ namespace ProyectoTDBI_Grupo4
                 case "Almacen":
                     Almacen a = (Almacen)info;
                     dba.defineQuery("DELETE FROM almacen WHERE \"codigoAlmacen\"=" + Convert.ToString(a.codigoAlmacen));
-                    dba.executeQuery();
-                    updateTable();
                     break;
                 case "Categoria":
                     Categoria cat = (Categoria)info;
                     dba.defineQuery("DELETE FROM categoria WHERE \"idProducto\"=" + Convert.ToString(cat.idProducto) + " AND \"nombreCategoria\"='" + cat.nombreCategoria + "'");
-                    dba.executeQuery();
-                    updateTable();
                     break;
                 case "Cliente":
                     Cliente clien = (Cliente)info;
+                    dba.defineQuery("DELETE FROM cliente WHERE \"idCliente\"=" + Convert.ToString(clien.idCliente));
                     break;
                 case "Contrato":
                     Contrato cont = (Contrato)info;
+                    dba.defineQuery("DELETE FROM contrato WHERE \"noCuenta\"=" + Convert.ToString(cont.noCuenta));
                     break;
                 case "DetalleFactura":
                     DetalleFactura det = (DetalleFactura)info;
+                    dba.defineQuery("DELETE FROM \"detalleFactura\" WHERE \"noFactura\"=" + Convert.ToString(det.noFactura));
                     break;
                 case "Factura":
                     Factura fact = (Factura)info;
+                    dba.defineQuery("DELETE FROM factura WHERE \"noFactura\"=" + Convert.ToString(fact.noFactura));
                     break;
                 case "Inventario":
                     Inventario inv = (Inventario)info;
+                    dba.defineQuery("DELETE FROM inventario WHERE \"codigoTienda\"=" + Convert.ToString(inv.codigoTienda) + " AND \"codigoAlmacen\"=" + inv.codigoAlmacen + " AND \"idProducto\"="+ inv.idProducto);
                     break;
                 case "Orden":
                     Orden ord = (Orden)info;
+                    dba.defineQuery("DELETE FROM orden WHERE \"noOrden\"=" + Convert.ToString(ord.noOrden));
                     break;
                 case "Producto":
                     Producto prod = (Producto)info;
+                    dba.defineQuery("DELETE FROM producto WHERE \"idProducto\"=" + Convert.ToString(prod.idProducto));
                     break;
                 case "Tienda":
                     Tienda tien = (Tienda)info;
+                    dba.defineQuery("DELETE FROM tienda WHERE \"codigoTienda\"=" + Convert.ToString(tien.codigoTienda));
                     break;
                 case "TieneEnCarrito":
                     TieneEnCarrito carr = (TieneEnCarrito)info;
+                    dba.defineQuery("DELETE FROM \"tieneEnCarrito\" WHERE \"idCliente\"=" + Convert.ToString(carr.idCliente) + " AND \"idProducto\"=" + carr.idProducto);
                     break;
             }
+            dba.executeQuery();
+            updateTable();
             dba.close();
         }
     }
