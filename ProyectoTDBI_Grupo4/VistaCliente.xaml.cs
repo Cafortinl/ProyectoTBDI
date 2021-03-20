@@ -55,9 +55,7 @@ namespace ProyectoTDBI_Grupo4
             dba.close();
         }
 
-        private void tablaProducto()
-        {
-
+        private void tablaProducto() { 
             NpgsqlDataReader dr;
             dba.open();
             string idd = (Convert.ToString(CB_TiendaSeleccionada.SelectedItem)).Split(",")[0];
@@ -66,7 +64,7 @@ namespace ProyectoTDBI_Grupo4
             dr = dba.executeQuery();
             while (dr.Read())
             {
-                listaOrden.Add(new Producto(dr.GetString(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
+                listaOrden.Add(new Producto(dr.GetString(1), dr.GetInt32(0), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
             }
             TablaProducto.ItemsSource = listaOrden;
             dba.close();
@@ -75,7 +73,34 @@ namespace ProyectoTDBI_Grupo4
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            NpgsqlDataReader dr;
+            int canti = Convert.ToInt32(VC_Cantidad.Text);
+            if (canti > 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("No puede ingresar una cantidad negativa de productos");
+            }
+        }
+
+        private void TablaProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = TablaProducto.SelectedIndex;
+            DataGridRow row = TablaProducto.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+            var info = TablaProducto.ItemContainerGenerator.ItemFromContainer(row);
+            Producto a = (Producto)info;
+            VC_idproducto.Text = Convert.ToString(a.idProducto);
+        }
+
+        private void CB_TiendaSeleccionada_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            tablaProducto();
+        }
+    }
+}
+
+/* NpgsqlDataReader dr;
             dba.open();
             List<String> infoTiend = new List<String>();
             dba.defineQuery("SELECT * FROM tienda");
@@ -85,7 +110,4 @@ namespace ProyectoTDBI_Grupo4
                 infoTiend.Add(Convert.ToString(dr.GetInt32(0)) + " , " + dr.GetString(1));
             }
             CB_TiendaSeleccionada.ItemsSource = infoTiend;
-            dba.close();
-        }
-    }
-}
+            dba.close();*/
