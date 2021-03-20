@@ -228,5 +228,57 @@ namespace ProyectoTDBI_Grupo4
             updateTable();
             dba.close();
         }
+
+        private void btAgregar_Click(object sender, RoutedEventArgs e)
+        {
+            ModificarTabla mt;
+            switch (cbTablaSelec.SelectedItem)
+            {
+                case "Almacen":
+                    mt = new ModificarTabla(1, 1, null);
+                    mt.Show();
+                    break;
+                case "Categoria":
+                    mt = new ModificarTabla(1, 2, null);
+                    mt.Show();
+                    break;
+                case "Cliente":
+                    mt = new ModificarTabla(1, 3, null);
+                    mt.Show();
+                    break;
+                case "Contrato":
+                    mt = new ModificarTabla(1, 4, null);
+                    mt.Show();
+                    break;
+                case "DetalleFactura":
+                    mt = new ModificarTabla(1, 5, null);
+                    mt.Show();
+                    break;
+                case "Factura":
+                    mt = new ModificarTabla(1, 6, null);
+                    mt.Show();
+                    break;
+                case "Inventario":
+                    mt = new ModificarTabla(1, 7, null);
+                    mt.Show();
+                    break;
+                case "Orden":
+                    mt = new ModificarTabla(1, 8, null);
+                    mt.Show();
+                    break;
+                case "Producto":
+                    mt = new ModificarTabla(1, 9, null);
+                    mt.Show();
+                    break;
+                case "Tienda":
+                    mt = new ModificarTabla(1, 10, null);
+                    mt.Show();
+                    break;
+                case "TieneEnCarrito":
+                    mt = new ModificarTabla(1, 11, null);
+                    mt.Show();
+                    break;
+            }
+        }
     }
 }

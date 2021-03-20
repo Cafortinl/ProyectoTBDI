@@ -10,7 +10,7 @@
         <Label Content="Tabla actual" HorizontalAlignment="Left" Margin="21,20,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbTablaSelec" HorizontalAlignment="Left" Margin="21,46,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbTablaSelec_SelectionChanged"/>
         <DataGrid x:Name="dgInfo" Margin="160,46,21,10" RowHeight="30" ColumnWidth="100"/>
-        <Button x:Name="btAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="54,96,0,0" VerticalAlignment="Top" Width="54"/>
+        <Button x:Name="btAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="54,96,0,0" VerticalAlignment="Top" Width="54" Click="btAgregar_Click"/>
         <Button x:Name="btModificar" Content="Modificar" HorizontalAlignment="Left" Margin="54,147,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="54,198,0,0" VerticalAlignment="Top" Width="54" Click="btEliminar_Click"/>
         <Button x:Name="btLogoff" Content="Cerrar sesión" HorizontalAlignment="Left" Margin="737,13,0,0" VerticalAlignment="Top" Click="btLogoff_Click"/>
