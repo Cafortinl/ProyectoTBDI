@@ -1,0 +1,14 @@
+﻿<Window x:Class="ProyectoTDBI_Grupo4.ModificarTabla"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
+        mc:Ignorable="d"
+        Title="Modificacion de tablas" Height="450" Width="800">
+    <Grid Margin="0,0,0,12">
+        <DataGrid x:Name="dgAgrEdit" Margin="38,37,39,37"/>
+        <Button x:Name="btGuardar" Content="Guardar" HorizontalAlignment="Center" Margin="0,402,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
