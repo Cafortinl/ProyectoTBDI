@@ -35,8 +35,9 @@ namespace ProyectoTDBI_Grupo4
             yearVencimiento = yv;
         }
       
-
-
+        public Cliente()
+        {
+        }
 
     }
 }

@@ -17,5 +17,9 @@ namespace ProyectoTDBI_Grupo4
             idCliente = cli;
         }
 
+        public Contrato()
+        {
+        }
+
     }
 }

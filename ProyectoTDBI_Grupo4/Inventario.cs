@@ -19,5 +19,9 @@ namespace ProyectoTDBI_Grupo4
             cantidadInventario = c;
         }
 
+        public Inventario()
+        {
+        }
+
     }
 }

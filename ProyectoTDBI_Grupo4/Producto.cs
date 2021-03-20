@@ -25,5 +25,9 @@ namespace ProyectoTDBI_Grupo4
             descripcion = desc;
         }
 
+        public Producto()
+        {
+        }
+
     }
 }

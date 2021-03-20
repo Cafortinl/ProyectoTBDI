@@ -15,5 +15,9 @@ namespace ProyectoTDBI_Grupo4
             nombreCategoria = nom;
         }
 
+        public Categoria()
+        {
+        }
+
     }
 }

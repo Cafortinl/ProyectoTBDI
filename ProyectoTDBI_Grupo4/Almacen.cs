@@ -15,25 +15,8 @@ namespace ProyectoTDBI_Grupo4
             ciudad = ciu;
         }
 
-        public void SetCodigoAlmacen(int x)
-        {
-            codigoAlmacen = x;
+        public Almacen() 
+        { 
         }
-
-        public int GetCodigoAlmacen()
-        {
-            return codigoAlmacen;
-        }
-
-        public void SetCiudad(string x)
-        {
-            ciudad = x;
-        }
-
-        public string GetCiudad()
-        {
-            return ciudad;
-        }
-
     }
 }

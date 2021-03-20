@@ -17,5 +17,9 @@ namespace ProyectoTDBI_Grupo4
             cantidadProductoCarrito = cant;
         }
 
+        public TieneEnCarrito()
+        {
+        }
+
     }
 }

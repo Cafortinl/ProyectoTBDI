@@ -15,5 +15,9 @@ namespace ProyectoTDBI_Grupo4
             ubicacion = u;
         }
 
+        public Tienda()
+        {
+        }
+
     }
 }

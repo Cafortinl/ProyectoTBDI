@@ -23,5 +23,9 @@ namespace ProyectoTDBI_Grupo4
             codigoTienda = t;
         }
 
+        public Factura()
+        {
+        }
+
     }
 }

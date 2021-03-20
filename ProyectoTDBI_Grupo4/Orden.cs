@@ -23,5 +23,9 @@ namespace ProyectoTDBI_Grupo4
             idCliente = cl;
         }
 
+        public Orden()
+        {
+        }
+
     }
 }

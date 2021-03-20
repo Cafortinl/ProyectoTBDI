@@ -23,5 +23,9 @@ namespace ProyectoTDBI_Grupo4
             subtotal = s;
         }
 
+        public DetalleFactura()
+        {
+        }
+
     }
 }
