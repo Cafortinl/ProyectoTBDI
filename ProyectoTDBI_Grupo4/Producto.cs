@@ -14,7 +14,7 @@ namespace ProyectoTDBI_Grupo4
         public string tipoProducto { get; set; }
         public string descripcion { get; set; }
 
-        public Producto(int id, string fab, string mod, string nombre, double p, string tipo, string desc)
+        public Producto(int id, string fab, string mod, string nombre, string tipo, string desc, double p)
         {
             idProducto = id;
             fabricante = fab;

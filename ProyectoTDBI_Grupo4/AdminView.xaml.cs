@@ -43,7 +43,7 @@ namespace ProyectoTDBI_Grupo4
         {
             this.Close();
         }
-
+         
         private void cbTablaSelec_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             NpgsqlDataReader dr;
@@ -137,7 +137,7 @@ namespace ProyectoTDBI_Grupo4
                     dr = dba.executeQuery();
                     while (dr.Read())
                     {
-                        infoProd.Add(new Producto(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetDouble(4), dr.GetString(5), dr.GetString(5)));
+                        infoProd.Add(new Producto(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
                     }
                     dgInfo.ItemsSource = infoProd;
                     break;

@@ -34,6 +34,9 @@ namespace ProyectoTDBI_Grupo4
             mesVencimiento = mv;
             yearVencimiento = yv;
         }
+      
+
+
 
     }
 }

@@ -44,6 +44,10 @@ namespace ProyectoTDBI_Grupo4
             cmd.ExecuteNonQuery();
         }
 
+        public NpgsqlCommand getcmd()
+        {
+            return cmd;
+        }
 
         public NpgsqlConnection getConn()
         {

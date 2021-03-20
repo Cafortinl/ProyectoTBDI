@@ -95,6 +95,17 @@ namespace ProyectoTDBI_Grupo4
                         else
                             MessageBox.Show("Contraseña incorrecta");
                     }
+                    else if (Usuario == "Cliente")
+                    {
+                        if (Contra == "1234")
+                        {
+                            
+                            VistaCliente bd = new VistaCliente("merv");
+                            bd.Show();
+                        }
+                        else
+                            MessageBox.Show("Contraseña incorrecta");
+                    }
                 }
                 else
                     MessageBox.Show("El usuario ingresado no se encuentra en la base de datos. Intentelo de nuevo.");
