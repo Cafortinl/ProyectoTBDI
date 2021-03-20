@@ -66,7 +66,7 @@ namespace ProyectoTDBI_Grupo4
             dr = dba.executeQuery();
             while (dr.Read())
             {
-                listaOrden.Add(new Producto(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
+                listaOrden.Add(new Producto(dr.GetString(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
             }
             TablaProducto.ItemsSource = listaOrden;
             dba.close();

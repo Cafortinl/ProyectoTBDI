@@ -46,6 +46,11 @@ namespace ProyectoTDBI_Grupo4
          
         private void cbTablaSelec_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            updateTable();
+        }
+
+        private void updateTable()
+        {
             NpgsqlDataReader dr;
             dba.open();
             switch (cbTablaSelec.SelectedItem)
@@ -56,7 +61,7 @@ namespace ProyectoTDBI_Grupo4
                     dr = dba.executeQuery();
                     while (dr.Read())
                     {
-                        infoAlmacen.Add(new Almacen(dr.GetInt32(0),dr.GetString(1)));
+                        infoAlmacen.Add(new Almacen(dr.GetInt32(0), dr.GetString(1)));
                     }
                     dgInfo.ItemsSource = infoAlmacen;
                     break;
@@ -137,7 +142,7 @@ namespace ProyectoTDBI_Grupo4
                     dr = dba.executeQuery();
                     while (dr.Read())
                     {
-                        infoProd.Add(new Producto(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
+                        infoProd.Add(new Producto(dr.GetString(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
                     }
                     dgInfo.ItemsSource = infoProd;
                     break;
@@ -163,7 +168,58 @@ namespace ProyectoTDBI_Grupo4
                     break;
             }
             dba.close();
+            dgInfo.IsReadOnly = true;
         }
 
+        private void btEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dgInfo.SelectedIndex;
+            DataGridRow row = dgInfo.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+            var info = dgInfo.ItemContainerGenerator.ItemFromContainer(row);
+            dba.open();
+            switch (cbTablaSelec.SelectedItem)
+            {
+                case "Almacen":
+                    Almacen a = (Almacen)info;
+                    dba.defineQuery("DELETE FROM almacen WHERE \"codigoAlmacen\"=" + Convert.ToString(a.codigoAlmacen));
+                    dba.executeQuery();
+                    updateTable();
+                    break;
+                case "Categoria":
+                    Categoria cat = (Categoria)info;
+                    dba.defineQuery("DELETE FROM categoria WHERE \"idProducto\"=" + Convert.ToString(cat.idProducto) + " AND \"nombreCategoria\"='" + cat.nombreCategoria + "'");
+                    dba.executeQuery();
+                    updateTable();
+                    break;
+                case "Cliente":
+                    Cliente clien = (Cliente)info;
+                    break;
+                case "Contrato":
+                    Contrato cont = (Contrato)info;
+                    break;
+                case "DetalleFactura":
+                    DetalleFactura det = (DetalleFactura)info;
+                    break;
+                case "Factura":
+                    Factura fact = (Factura)info;
+                    break;
+                case "Inventario":
+                    Inventario inv = (Inventario)info;
+                    break;
+                case "Orden":
+                    Orden ord = (Orden)info;
+                    break;
+                case "Producto":
+                    Producto prod = (Producto)info;
+                    break;
+                case "Tienda":
+                    Tienda tien = (Tienda)info;
+                    break;
+                case "TieneEnCarrito":
+                    TieneEnCarrito carr = (TieneEnCarrito)info;
+                    break;
+            }
+            dba.close();
+        }
     }
 }
