@@ -174,59 +174,64 @@ namespace ProyectoTDBI_Grupo4
         private void btEliminar_Click(object sender, RoutedEventArgs e)
         {
             int index = dgInfo.SelectedIndex;
-            DataGridRow row = dgInfo.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
-            var info = dgInfo.ItemContainerGenerator.ItemFromContainer(row);
-            dba.open();
-            switch (cbTablaSelec.SelectedItem)
+            if (index > -1)
             {
-                case "Almacen":
-                    Almacen a = (Almacen)info;
-                    dba.defineQuery("DELETE FROM almacen WHERE \"codigoAlmacen\"=" + Convert.ToString(a.codigoAlmacen));
-                    break;
-                case "Categoria":
-                    Categoria cat = (Categoria)info;
-                    dba.defineQuery("DELETE FROM categoria WHERE \"idProducto\"=" + Convert.ToString(cat.idProducto) + " AND \"nombreCategoria\"='" + cat.nombreCategoria + "'");
-                    break;
-                case "Cliente":
-                    Cliente clien = (Cliente)info;
-                    dba.defineQuery("DELETE FROM cliente WHERE \"idCliente\"=" + Convert.ToString(clien.idCliente));
-                    break;
-                case "Contrato":
-                    Contrato cont = (Contrato)info;
-                    dba.defineQuery("DELETE FROM contrato WHERE \"noCuenta\"=" + Convert.ToString(cont.noCuenta));
-                    break;
-                case "DetalleFactura":
-                    DetalleFactura det = (DetalleFactura)info;
-                    dba.defineQuery("DELETE FROM \"detalleFactura\" WHERE \"noFactura\"=" + Convert.ToString(det.noFactura));
-                    break;
-                case "Factura":
-                    Factura fact = (Factura)info;
-                    dba.defineQuery("DELETE FROM factura WHERE \"noFactura\"=" + Convert.ToString(fact.noFactura));
-                    break;
-                case "Inventario":
-                    Inventario inv = (Inventario)info;
-                    dba.defineQuery("DELETE FROM inventario WHERE \"codigoTienda\"=" + Convert.ToString(inv.codigoTienda) + " AND \"codigoAlmacen\"=" + inv.codigoAlmacen + " AND \"idProducto\"="+ inv.idProducto);
-                    break;
-                case "Orden":
-                    Orden ord = (Orden)info;
-                    dba.defineQuery("DELETE FROM orden WHERE \"noOrden\"=" + Convert.ToString(ord.noOrden));
-                    break;
-                case "Producto":
-                    Producto prod = (Producto)info;
-                    dba.defineQuery("DELETE FROM producto WHERE \"idProducto\"=" + Convert.ToString(prod.idProducto));
-                    break;
-                case "Tienda":
-                    Tienda tien = (Tienda)info;
-                    dba.defineQuery("DELETE FROM tienda WHERE \"codigoTienda\"=" + Convert.ToString(tien.codigoTienda));
-                    break;
-                case "TieneEnCarrito":
-                    TieneEnCarrito carr = (TieneEnCarrito)info;
-                    dba.defineQuery("DELETE FROM \"tieneEnCarrito\" WHERE \"idCliente\"=" + Convert.ToString(carr.idCliente) + " AND \"idProducto\"=" + carr.idProducto);
-                    break;
+                DataGridRow row = dgInfo.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+                var info = dgInfo.ItemContainerGenerator.ItemFromContainer(row);
+                dba.open();
+                switch (cbTablaSelec.SelectedItem)
+                {
+                    case "Almacen":
+                        Almacen a = (Almacen)info;
+                        dba.defineQuery("DELETE FROM almacen WHERE \"codigoAlmacen\"=" + Convert.ToString(a.codigoAlmacen));
+                        break;
+                    case "Categoria":
+                        Categoria cat = (Categoria)info;
+                        dba.defineQuery("DELETE FROM categoria WHERE \"idProducto\"=" + Convert.ToString(cat.idProducto) + " AND \"nombreCategoria\"='" + cat.nombreCategoria + "'");
+                        break;
+                    case "Cliente":
+                        Cliente clien = (Cliente)info;
+                        dba.defineQuery("DELETE FROM cliente WHERE \"idCliente\"=" + Convert.ToString(clien.idCliente));
+                        break;
+                    case "Contrato":
+                        Contrato cont = (Contrato)info;
+                        dba.defineQuery("DELETE FROM contrato WHERE \"noCuenta\"=" + Convert.ToString(cont.noCuenta));
+                        break;
+                    case "DetalleFactura":
+                        DetalleFactura det = (DetalleFactura)info;
+                        dba.defineQuery("DELETE FROM \"detalleFactura\" WHERE \"noFactura\"=" + Convert.ToString(det.noFactura));
+                        break;
+                    case "Factura":
+                        Factura fact = (Factura)info;
+                        dba.defineQuery("DELETE FROM factura WHERE \"noFactura\"=" + Convert.ToString(fact.noFactura));
+                        break;
+                    case "Inventario":
+                        Inventario inv = (Inventario)info;
+                        dba.defineQuery("DELETE FROM inventario WHERE \"codigoTienda\"=" + Convert.ToString(inv.codigoTienda) + " AND \"codigoAlmacen\"=" + inv.codigoAlmacen + " AND \"idProducto\"=" + inv.idProducto);
+                        break;
+                    case "Orden":
+                        Orden ord = (Orden)info;
+                        dba.defineQuery("DELETE FROM orden WHERE \"noOrden\"=" + Convert.ToString(ord.noOrden));
+                        break;
+                    case "Producto":
+                        Producto prod = (Producto)info;
+                        dba.defineQuery("DELETE FROM producto WHERE \"idProducto\"=" + Convert.ToString(prod.idProducto));
+                        break;
+                    case "Tienda":
+                        Tienda tien = (Tienda)info;
+                        dba.defineQuery("DELETE FROM tienda WHERE \"codigoTienda\"=" + Convert.ToString(tien.codigoTienda));
+                        break;
+                    case "TieneEnCarrito":
+                        TieneEnCarrito carr = (TieneEnCarrito)info;
+                        dba.defineQuery("DELETE FROM \"tieneEnCarrito\" WHERE \"idCliente\"=" + Convert.ToString(carr.idCliente) + " AND \"idProducto\"=" + carr.idProducto);
+                        break;
+                }
+                    dba.executeQuery();
+                    dba.close();
+                    updateTable();
             }
-            dba.executeQuery();
-            dba.close();
-            updateTable();
+            else
+                MessageBox.Show("Debe seleccionar un elemento para poder eliminarlo.");
         }
 
         private void btAgregar_Click(object sender, RoutedEventArgs e)
@@ -284,56 +289,61 @@ namespace ProyectoTDBI_Grupo4
         private void btModificar_Click(object sender, RoutedEventArgs e)
         {
             int index = dgInfo.SelectedIndex;
-            DataGridRow row = dgInfo.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
-            var info = dgInfo.ItemContainerGenerator.ItemFromContainer(row);
-            ModificarTabla mt;
-            switch (cbTablaSelec.SelectedItem)
+            if (index > -1)
             {
-                case "Almacen":
-                    mt = new ModificarTabla(2, 1, info, this);
-                    mt.Show();                    
-                    break;                        
-                case "Categoria":                 
-                    mt = new ModificarTabla(2, 2, info, this);
-                    mt.Show();                    
-                    break;                        
-                case "Cliente":                   
-                    mt = new ModificarTabla(2, 3, info, this);
-                    mt.Show();                    
-                    break;                        
-                case "Contrato":                  
-                    mt = new ModificarTabla(2, 4, info, this);
-                    mt.Show();                    
-                    break;                        
-                case "DetalleFactura":            
-                    mt = new ModificarTabla(2, 5, info, this);
-                    mt.Show();                   
-                    break;                       
-                case "Factura":                  
-                    mt = new ModificarTabla(2, 6, info, this);
-                    mt.Show();                    
-                    break;                        
-                case "Inventario":                
-                    mt = new ModificarTabla(2, 7, info, this);
-                    mt.Show();                    
-                    break;                        
-                case "Orden":                     
-                    mt = new ModificarTabla(2, 8, info, this);
-                    mt.Show();                    
-                    break;                        
-                case "Producto":                  
-                    mt = new ModificarTabla(2, 9, info, this);
-                    mt.Show();                    
-                    break;                        
-                case "Tienda":                    
-                    mt = new ModificarTabla(2, 10, info, this);
-                    mt.Show();                    
-                    break;                        
-                case "TieneEnCarrito":            
-                    mt = new ModificarTabla(2, 11, info, this);
-                    mt.Show();
-                    break;
+                DataGridRow row = dgInfo.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+                var info = dgInfo.ItemContainerGenerator.ItemFromContainer(row);
+                ModificarTabla mt;
+                switch (cbTablaSelec.SelectedItem)
+                {
+                    case "Almacen":
+                        mt = new ModificarTabla(2, 1, info, this);
+                        mt.Show();
+                        break;
+                    case "Categoria":
+                        mt = new ModificarTabla(2, 2, info, this);
+                        mt.Show();
+                        break;
+                    case "Cliente":
+                        mt = new ModificarTabla(2, 3, info, this);
+                        mt.Show();
+                        break;
+                    case "Contrato":
+                        mt = new ModificarTabla(2, 4, info, this);
+                        mt.Show();
+                        break;
+                    case "DetalleFactura":
+                        mt = new ModificarTabla(2, 5, info, this);
+                        mt.Show();
+                        break;
+                    case "Factura":
+                        mt = new ModificarTabla(2, 6, info, this);
+                        mt.Show();
+                        break;
+                    case "Inventario":
+                        mt = new ModificarTabla(2, 7, info, this);
+                        mt.Show();
+                        break;
+                    case "Orden":
+                        mt = new ModificarTabla(2, 8, info, this);
+                        mt.Show();
+                        break;
+                    case "Producto":
+                        mt = new ModificarTabla(2, 9, info, this);
+                        mt.Show();
+                        break;
+                    case "Tienda":
+                        mt = new ModificarTabla(2, 10, info, this);
+                        mt.Show();
+                        break;
+                    case "TieneEnCarrito":
+                        mt = new ModificarTabla(2, 11, info, this);
+                        mt.Show();
+                        break;
+                }
             }
+            else
+                MessageBox.Show("Debe seleccionar un elemento para poder modificarlo.");
         }
     }
 }
