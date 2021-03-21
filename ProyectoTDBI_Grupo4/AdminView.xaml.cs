@@ -49,7 +49,7 @@ namespace ProyectoTDBI_Grupo4
             updateTable();
         }
 
-        private void updateTable()
+        public void updateTable()
         {
             NpgsqlDataReader dr;
             dba.open();
@@ -235,47 +235,102 @@ namespace ProyectoTDBI_Grupo4
             switch (cbTablaSelec.SelectedItem)
             {
                 case "Almacen":
-                    mt = new ModificarTabla(1, 1, null);
+                    mt = new ModificarTabla(1, 1, null, this);
                     mt.Show();
                     break;
                 case "Categoria":
-                    mt = new ModificarTabla(1, 2, null);
+                    mt = new ModificarTabla(1, 2, null, this);
                     mt.Show();
                     break;
                 case "Cliente":
-                    mt = new ModificarTabla(1, 3, null);
+                    mt = new ModificarTabla(1, 3, null, this);
                     mt.Show();
                     break;
                 case "Contrato":
-                    mt = new ModificarTabla(1, 4, null);
+                    mt = new ModificarTabla(1, 4, null, this);
                     mt.Show();
                     break;
                 case "DetalleFactura":
-                    mt = new ModificarTabla(1, 5, null);
+                    mt = new ModificarTabla(1, 5, null, this);
                     mt.Show();
                     break;
                 case "Factura":
-                    mt = new ModificarTabla(1, 6, null);
+                    mt = new ModificarTabla(1, 6, null, this);
                     mt.Show();
                     break;
                 case "Inventario":
-                    mt = new ModificarTabla(1, 7, null);
+                    mt = new ModificarTabla(1, 7, null, this);
                     mt.Show();
                     break;
                 case "Orden":
-                    mt = new ModificarTabla(1, 8, null);
+                    mt = new ModificarTabla(1, 8, null, this);
                     mt.Show();
                     break;
                 case "Producto":
-                    mt = new ModificarTabla(1, 9, null);
+                    mt = new ModificarTabla(1, 9, null, this);
                     mt.Show();
                     break;
                 case "Tienda":
-                    mt = new ModificarTabla(1, 10, null);
+                    mt = new ModificarTabla(1, 10, null, this);
                     mt.Show();
                     break;
                 case "TieneEnCarrito":
-                    mt = new ModificarTabla(1, 11, null);
+                    mt = new ModificarTabla(1, 11, null, this);
+                    mt.Show();
+                    break;
+            }
+        }
+
+        private void btModificar_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dgInfo.SelectedIndex;
+            DataGridRow row = dgInfo.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+            var info = dgInfo.ItemContainerGenerator.ItemFromContainer(row);
+            ModificarTabla mt;
+            switch (cbTablaSelec.SelectedItem)
+            {
+                case "Almacen":
+                    mt = new ModificarTabla(2, 1, info, this);
+                    mt.Show();                    
+                    break;                        
+                case "Categoria":                 
+                    mt = new ModificarTabla(2, 2, info, this);
+                    mt.Show();                    
+                    break;                        
+                case "Cliente":                   
+                    mt = new ModificarTabla(2, 3, info, this);
+                    mt.Show();                    
+                    break;                        
+                case "Contrato":                  
+                    mt = new ModificarTabla(2, 4, info, this);
+                    mt.Show();                    
+                    break;                        
+                case "DetalleFactura":            
+                    mt = new ModificarTabla(2, 5, info, this);
+                    mt.Show();                   
+                    break;                       
+                case "Factura":                  
+                    mt = new ModificarTabla(2, 6, info, this);
+                    mt.Show();                    
+                    break;                        
+                case "Inventario":                
+                    mt = new ModificarTabla(2, 7, info, this);
+                    mt.Show();                    
+                    break;                        
+                case "Orden":                     
+                    mt = new ModificarTabla(2, 8, info, this);
+                    mt.Show();                    
+                    break;                        
+                case "Producto":                  
+                    mt = new ModificarTabla(2, 9, info, this);
+                    mt.Show();                    
+                    break;                        
+                case "Tienda":                    
+                    mt = new ModificarTabla(2, 10, info, this);
+                    mt.Show();                    
+                    break;                        
+                case "TieneEnCarrito":            
+                    mt = new ModificarTabla(2, 11, info, this);
                     mt.Show();
                     break;
             }

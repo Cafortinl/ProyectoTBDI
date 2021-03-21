@@ -18,7 +18,7 @@ namespace ProyectoTDBI_Grupo4
     /// </summary>
     public partial class ModificarTabla : Window
     {
-
+        private static adminView av;
         private static int opcion;
         private static int tablaSelec;
         private static object elemento;
@@ -35,9 +35,10 @@ namespace ProyectoTDBI_Grupo4
                 User,
                 Password);
         private static DBAdmin dba = new DBAdmin(connString);
-        public ModificarTabla(int op, int tabla, object elem)
+        public ModificarTabla(int op, int tabla, object elem, adminView avi)
         {
             InitializeComponent();
+            av = avi;
             opcion = op;
             tablaSelec = tabla;
             elemento = elem;
@@ -378,6 +379,8 @@ namespace ProyectoTDBI_Grupo4
             }
             dba.executeQuery();
             dba.close();
+            this.Close();
+            av.updateTable();
         }
     }
 }
