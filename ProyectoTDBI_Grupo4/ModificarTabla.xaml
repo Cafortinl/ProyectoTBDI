@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Modificacion de tablas" Height="450" Width="800">
     <Grid Margin="0,0,0,12">
-        <DataGrid x:Name="dgAgrEdit" Margin="38,37,39,37"/>
-        <Button x:Name="btGuardar" Content="Guardar" HorizontalAlignment="Center" Margin="0,402,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dgAgrEdit" Margin="38,37,39,68"/>
+        <Button x:Name="btGuardar" Content="Guardar" HorizontalAlignment="Center" Margin="0,376,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.598,-1.163" Click="btGuardar_Click"/>
 
     </Grid>
 </Window>

@@ -225,8 +225,8 @@ namespace ProyectoTDBI_Grupo4
                     break;
             }
             dba.executeQuery();
-            updateTable();
             dba.close();
+            updateTable();
         }
 
         private void btAgregar_Click(object sender, RoutedEventArgs e)

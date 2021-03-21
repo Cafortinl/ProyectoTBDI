@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Npgsql;
 
 namespace ProyectoTDBI_Grupo4
 {
@@ -21,6 +22,19 @@ namespace ProyectoTDBI_Grupo4
         private static int opcion;
         private static int tablaSelec;
         private static object elemento;
+        private static string Host = "proyectotdbi.ce6kih4lqvgw.us-east-1.rds.amazonaws.com";
+        private static string User = "administrador";
+        private static string DBname = "ProyectoTDBI";
+        private static string Port = "5432";
+        private static string Password = "AdM1n_Pr0yect0#1";
+        private static string connString = String.Format(
+                "Server={0};Port={1};Database={2};User Id={3};Password={4};",
+                Host,
+                Port,
+                DBname,
+                User,
+                Password);
+        private static DBAdmin dba = new DBAdmin(connString);
         public ModificarTabla(int op, int tabla, object elem)
         {
             InitializeComponent();
@@ -151,6 +165,131 @@ namespace ProyectoTDBI_Grupo4
                     }
                     break;
             }
+            dgAgrEdit.CanUserAddRows = false;
+        }
+
+        private void btGuardar_Click(object sender, RoutedEventArgs e)
+        {
+            dba.open();
+            NpgsqlDataReader dr;
+            int index = 0;
+            DataGridRow row = dgAgrEdit.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+            var info = dgAgrEdit.ItemContainerGenerator.ItemFromContainer(row);
+            //for(int i = 0;i < ((DataGridRow)info).)
+            switch (opcion)
+            {
+                case 1:
+                    switch (tablaSelec)
+                    {
+                        case 1:
+                            Almacen a = (Almacen)info;
+                            dba.defineQuery("SELECT 1 from almacen WHERE \"codigoAlmacen\"=" + a.codigoAlmacen);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO almacen VALUES(" + a.codigoAlmacen + ",'" + a.ciudad + "')");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
+                            break;
+                        case 2:
+                            Categoria cat = (Categoria)info;
+                            dba.defineQuery("SELECT 1 from categoria WHERE \"idProducto\"=" + cat.idProducto + "AND \"nombreCategoria\"='" + cat.nombreCategoria + "'");
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO categoria VALUES(" + cat.idProducto + ",'" + cat.nombreCategoria + "')");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
+                            break;
+                        case 3:
+                            Cliente clien = (Cliente)info;
+                            dba.defineQuery("SELECT 1 from cliente WHERE \"idCliente\"=" + clien.idCliente);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO cliente VALUES(" + clien.idCliente + ",'" + clien.nombre + "'," + clien.isFrecuente + "," + clien.isVirtual + ",'" + clien.direccionFacturacion + "','" + clien.nombreUsuario + "','" + clien.password + "'," + clien.numeroTarjeta + ",'" + clien.tarjetaHabiente + "'," + clien.codigoSeguridad + "," + clien.mesVencimiento + "," + clien.yearVencimiento);
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
+                            break;
+                        case 4:
+                            Contrato cont = (Contrato)info;
+                            dba.defineQuery("SELECT 1 from contrato WHERE \"noCuenta\"=" + cont.noCuenta);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO contrato VALUES(" + cont.noCuenta + "," + cont.cuota + ","+ cont.idCliente + ")");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
+                            break;
+                        case 5:
+                            DetalleFactura det = (DetalleFactura)info;
+                            dba.defineQuery("SELECT 1 from \"detalleFactura\" WHERE \"noFactura\"=" + det.noFactura);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                //dba.defineQuery("INSERT INTO \"detalleFactura\" VALUES(" + cat.idProducto + ",'" + cat.nombreCategoria + "')");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            break;
+                        case 9:
+                            break;
+                        case 10:
+                            break;
+                        case 11:
+                            break;
+                    }
+                    break;
+                case 2:
+                    switch (tablaSelec)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            break;
+                        case 9:
+                            break;
+                        case 10:
+                            break;
+                        case 11:
+                            break;
+                    }
+                    break;
+            }
+            dba.executeQuery();
+            dba.close();
         }
     }
 }
