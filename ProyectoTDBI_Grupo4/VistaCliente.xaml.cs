@@ -35,6 +35,7 @@ namespace ProyectoTDBI_Grupo4
                 Password);
         private DBAdmin dba = new DBAdmin(connString);
         private static string user;
+        private static int idcliente;
 
         public VistaCliente(string u)
         {
@@ -50,7 +51,20 @@ namespace ProyectoTDBI_Grupo4
                 infoTiend.Add(Convert.ToString(dr.GetInt32(0)) + " , " + dr.GetString(1));
             }
             CB_TiendaSeleccionada.ItemsSource = infoTiend;
-            dba.close();
+
+            dba.clearQuery();
+            dr = null;
+            
+            dba.defineQuery("SELECT \"idCliente\" FROM cliente WHERE \"nombreUsuario\" = '" + user + "'");
+            dr = dba.executeQuery();
+            if (dr.HasRows)
+            {
+                dr.Read();
+                idcliente = Convert.ToInt32(dr[0]);
+                dba.close();
+                tablacarrito();
+                
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -58,19 +72,34 @@ namespace ProyectoTDBI_Grupo4
             int canti = Convert.ToInt32(VC_Cantidad.Text);
             int idpro = Convert.ToInt32(VC_idproducto.Text);
             if (canti > 0 )
-            { 
+            {
                 NpgsqlDataReader dr;
                 dba.open();
-                dba.defineQuery("SELECT \"idCliente\" FROM cliente WHERE \"nombreUsuario\" = '"+user+"'");
-                dr = dba.executeQuery();
+                dba.defineQuery("SELECT 1 FROM \"tieneEnCarrito\" WHERE \"idCliente\" = " + idcliente + " AND \"idProducto\" ="+idpro);
+                dr= dba.executeQuery();
                 if (dr.HasRows)
                 {
+                    dba.clearQuery();
+                    dr = null;
+                    dba.defineQuery("SELECT \"cantidadProductoCarrito\" FROM \"tieneEnCarrito\" WHERE \"idCliente\" = " + idcliente + " AND \"idProducto\" =" + idpro);
+                    dr = dba.executeQuery();
                     dr.Read();
-                    int idcliente = Convert.ToInt32(dr[0]);
-                    MessageBox.Show("dsa "+idcliente);
-                    dba.close();
-                    tablacarrito(idcliente,idpro,canti);
+                    int cantidad = dr.GetInt32(0);
+                    cantidad += canti;
+                    dba.clearQuery();
+                    dr = null;
+                    dba.defineQuery("UPDATE \"tieneEnCarrito\" SET \"cantidadProductoCarrito\"="+cantidad+ "WHERE \"idCliente\" = " + idcliente + " AND \"idProducto\" =" + idpro);
+                    dba.executeQuery();
                 }
+                else
+                {
+                    dba.clearQuery();
+                    dr = null;
+                    dba.defineQuery("INSERT INTO  \"tieneEnCarrito\" VALUES (" + idcliente + "," + idpro + "," + canti + ")");
+                    dba.executeQuery();
+                }
+                dba.close();
+                tablacarrito();
             }
             else
             {
@@ -92,11 +121,11 @@ namespace ProyectoTDBI_Grupo4
             tablaProducto();
         }
 
-        private void tablacarrito(int idcliente, int idpro, int canti)
+        private void tablacarrito()
         {
             NpgsqlDataReader dr;
             dba.open();
-            List<TieneEnCarrito> listaOrden = new List<TieneEnCarrito>();
+            List <TieneEnCarrito> listaOrden = new List<TieneEnCarrito>();
             dba.defineQuery("SELECT * FROM \"tieneEnCarrito\" WHERE \"idCliente\" = " + idcliente);
             dr = dba.executeQuery();
             while (dr.Read())
@@ -126,6 +155,18 @@ namespace ProyectoTDBI_Grupo4
             
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int index = TablaCarrito.SelectedIndex;
+            DataGridRow row = TablaCarrito.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+            var info = TablaCarrito.ItemContainerGenerator.ItemFromContainer(row);
+            dba.open();
+            TieneEnCarrito carr = (TieneEnCarrito)info;
+            dba.defineQuery("DELETE FROM \"tieneEnCarrito\" WHERE \"idCliente\"=" + carr.idCliente + " AND \"idProducto\"=" + carr.idProducto);
+            dba.executeQuery();
+            dba.close();
+            tablacarrito();
+        }
     }
 }
 
