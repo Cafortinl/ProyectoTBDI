@@ -181,34 +181,30 @@ namespace ProyectoTDBI_Grupo4
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             dba.open();
-            int pago=0;
-            NpgsqlDataReader dr,da;
-            dba.defineQuery("SELECT \"idProducto\" AND \"cantidadProductoCarrito\" FROM \"tieneEnCarrito\" WHERE \"idCliente\" = " + idcliente );
+            double pago=0;
+            string productos="";
+            NpgsqlDataReader dr;
+            dba.defineQuery("SELECT precio,\"cantidadProductoCarrito\",\"nombreProducto\" FROM producto NATURAL JOIN (SELECT * FROM \"tieneEnCarrito\" WHERE  \"idCliente\" = " + idcliente+") AS carritoo");
             dr = dba.executeQuery();
             while (dr.Read())
             {
-                dba.defineQuery("SELECT \"precio\"");
-                
+                pago += dr.GetDouble(0)*dr.GetInt32(1);
+                double c= dr.GetDouble(0) * dr.GetInt32(1);
+                productos += dr.GetString(2)+" ("+dr.GetInt32(1)+")...."+c+"\n";
             }
-
+            MessageBox.Show("<-------|MENOSOTIRA|------->\n" +productos+"\n SUBTOTAL: "+ pago+"\n Disfrute su compra :D");
+            dba.clearQuery();
             dba.defineQuery("DELETE  FROM \"tieneEnCarrito\" WHERE \"idCliente\"=" + idcliente);
             dba.executeQuery();
             dba.close();
             tablacarrito();
 
-            MessageBox.Show("<-------|MENOSOTIRA|------->\n");
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
 
-/* NpgsqlDataReader dr;
-            dba.open();
-            List<String> infoTiend = new List<String>();
-            dba.defineQuery("SELECT * FROM tienda");
-            dr = dba.executeQuery();
-            while (dr.Read())
-            {
-                infoTiend.Add(Convert.ToString(dr.GetInt32(0)) + " , " + dr.GetString(1));
-            }
-            CB_TiendaSeleccionada.ItemsSource = infoTiend;
-            dba.close();*/

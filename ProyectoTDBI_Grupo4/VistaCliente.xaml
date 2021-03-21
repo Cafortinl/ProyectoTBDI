@@ -14,7 +14,7 @@
         <Button Content="Eliminar" HorizontalAlignment="Left" Margin="36,313,0,0" VerticalAlignment="Top" Width="188" Height="32" Click="Button_Click"/>
         <Button Content="Agregar a carrito&#xD;&#xA;" HorizontalAlignment="Left" Margin="43,197,0,0" VerticalAlignment="Top" Width="199" Height="26" Click="Button_Click_1"/>
         <Button Content="Comprar" HorizontalAlignment="Left" Margin="36,416,0,0" VerticalAlignment="Top" Width="188" Height="33" Click="Button_Click_3"/>
-        <Button Content="Salir" HorizontalAlignment="Left" Margin="36,468,0,0" VerticalAlignment="Top" Width="188" Height="32"/>
+        <Button Content="Salir" HorizontalAlignment="Left" Margin="36,468,0,0" VerticalAlignment="Top" Width="188" Height="32" Click="Button_Click_4"/>
         <TextBox x:Name="VC_Cantidad" HorizontalAlignment="Left" Margin="116,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Height="32" Text="1"/>
         <Label Content="Cantidad:&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="36,148,0,0" VerticalAlignment="Top" Height="26"/>
         <Label Content="" HorizontalAlignment="Left" Margin="43,109,0,0" VerticalAlignment="Top" Height="26"/>
