@@ -241,22 +241,88 @@ namespace ProyectoTDBI_Grupo4
                             {
                                 dba.clearQuery();
                                 dr = null;
-                                //dba.defineQuery("INSERT INTO \"detalleFactura\" VALUES(" + cat.idProducto + ",'" + cat.nombreCategoria + "')");
+                                dba.defineQuery("INSERT INTO \"detalleFactura\" VALUES(" + det.noFactura + "," + det.total + "," + det.isv + ","+ det.cantidadProducto + "," + det.idProducto + "," + det.subtotal +")");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
                             break;
                         case 6:
+                            Factura fact = (Factura)info;
+                            dba.defineQuery("SELECT 1 from factura WHERE \"noFactura\"=" + fact.noFactura);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO factura VALUES(" + fact.noFactura + "," + fact.RTN + ",'" + fact.fechaEmision + "','" + fact.direccion + "'," + fact.idCliente + "," + fact.codigoTienda + ")");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
                             break;
                         case 7:
+                            Inventario inv = (Inventario)info;
+                            dba.defineQuery("SELECT 1 from inventario WHERE \"codigoTienda\"=" + inv.codigoTienda + " AND \"codigoAlmacen\"=" + inv.codigoAlmacen + " AND \"idProducto\"=" + inv.idProducto);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO inventario VALUES(" + inv.codigoTienda + "," + inv.codigoAlmacen + "," + inv.idProducto + "," + inv.cantidadInventario + ")");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
                             break;
                         case 8:
+                            Orden ord = (Orden)info;
+                            dba.defineQuery("SELECT 1 from orden WHERE \"noOrden\"=" + ord.noOrden);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO orden VALUES(" + ord.noOrden + ",'" + ord.nombreRemitente + "','" + ord.empresaEnvio + "','" + ord.direccionEnvio + "'," + ord.noSeguimiento + "," + ord.idCliente + ")");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
                             break;
                         case 9:
+                            Producto prod = (Producto)info;
+                            dba.defineQuery("SELECT 1 from producto WHERE \"idProducto\"=" + prod.idProducto);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO producto VALUES('" + prod.fabricante + "'," + prod.idProducto + ",'" + prod.modelo + "','" + prod.nombreProducto + "','" + prod.tipoProducto + "','" + prod.descripcion + "'," + prod.precio + ")");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
                             break;
                         case 10:
+                            Tienda tien = (Tienda)info;
+                            dba.defineQuery("SELECT 1 from tienda WHERE \"codigoTienda\"=" + tien.codigoTienda);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO tienda VALUES(" + tien.codigoTienda + ",'" + tien.ubicacion + "')");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
                             break;
                         case 11:
+                            TieneEnCarrito carr = (TieneEnCarrito)info;
+                            dba.defineQuery("SELECT 1 from \"tieneEnCarrito\" WHERE \"idCliente\"=" + carr.idCliente + " AND \"idProducto\"=" + carr.idProducto);
+                            dr = dba.executeQuery();
+                            if (!dr.HasRows)
+                            {
+                                dba.clearQuery();
+                                dr = null;
+                                dba.defineQuery("INSERT INTO \"tieneEnCarrito\" VALUES(" + carr.idCliente + "," + carr.idProducto + "," + carr.cantidadProductoCarrito + ")");
+                            }
+                            else
+                                MessageBox.Show("No puede repetir la llave de una tabla");
                             break;
                     }
                     break;
@@ -264,26 +330,48 @@ namespace ProyectoTDBI_Grupo4
                     switch (tablaSelec)
                     {
                         case 1:
+                            Almacen a = (Almacen)info;
+                            dba.defineQuery("UPDATE almacen SET \"codigoAlmacen\"=" + a.codigoAlmacen + ", ciudad='" + a.ciudad + "' WHERE \"codigoAlmacen\"=" + ((Almacen)elemento).codigoAlmacen);
                             break;
                         case 2:
+                            Categoria cat = (Categoria)info;
+                            dba.defineQuery("UPDATE categoria SET \"idProducto\"=" + cat.idProducto + ",\"nombreCategoria\"='" + cat.nombreCategoria + "' WHERE \"idProducto\"=" + ((Categoria)elemento).idProducto + "AND \"nombreCategoria\"='" + ((Categoria)elemento).nombreCategoria + "'");
                             break;
                         case 3:
+                            Cliente clien = (Cliente)info;
+                            dba.defineQuery("UPDATE cliente SET \"idCliente\"=" + clien.idCliente + ", \"nombreCliente\"='" + clien.nombre + "', \"isFrecuente\"=" + clien.isFrecuente + ",\"isVirtual\"=" + clien.isVirtual + ",\"direccionFacturacion\"='" + clien.direccionFacturacion + "',\"nombreUsuario\"='" + clien.nombreUsuario + "',password='" + clien.password + "',\"numeroTarjeta\"=" + clien.numeroTarjeta + ",\"tarjetaHabiente\"='" + clien.tarjetaHabiente + "',\"codigoSeguridad\"=" + clien.codigoSeguridad + ",\"mesVencimiento\"=" + clien.mesVencimiento + ",\"yearVencimiento\"" + clien.yearVencimiento + " WHERE \"idCliente\"=" + ((Cliente)elemento).idCliente);
                             break;
-                        case 4:
+                        case 4://aqui
+                            Contrato cont = (Contrato)info;
+                            dba.defineQuery("UPDATE contrato SET \"noCuenta\"=" + cont.noCuenta + ",cuota=" + cont.cuota + ",\"idCliente\"=" + cont.idCliente + " WHERE \"noCuenta\"=" + ((Contrato)elemento).noCuenta);
                             break;
                         case 5:
+                            DetalleFactura det = (DetalleFactura)info;
+                            dba.defineQuery("UPDATE \"detalleFactura\" SET \"noFactura\"=" + det.noFactura + ",total=" + det.total + ",isv=" + det.isv + ",\"cantidadProducto\"=" + det.cantidadProducto + ",\"idProducto\"=" + det.idProducto + ",subtotal=" + det.subtotal + " WHERE \"noFactura\"=" + ((DetalleFactura)elemento).noFactura);
                             break;
                         case 6:
+                            Factura fact = (Factura)info;
+                            dba.defineQuery("UPDATE factura SET \"noFactura\"=" + fact.noFactura + ",RTN=" + fact.RTN + ",\"fechaEmision\"='" + fact.fechaEmision + "',direccion='" + fact.direccion + "',\"idCliente\"=" + fact.idCliente + ",\"codigoTienda\"=" + fact.codigoTienda + " WHERE \"noFactura\"=" + ((Factura)elemento).noFactura);
                             break;
                         case 7:
+                            Inventario inv = (Inventario)info;
+                            dba.defineQuery("UPDATE inventario SET \"codigoTienda\"=" + inv.codigoTienda + ",\"codigoAlmacen\"=" + inv.codigoAlmacen + ",\"idProducto\"=" + inv.idProducto + ",\"cantidadInventario\"=" + inv.cantidadInventario + " WHERE \"codigoTienda\"=" + ((Inventario)elemento).codigoTienda + " AND \"codigoAlmacen\"=" + ((Inventario)elemento).codigoAlmacen + " AND \"idProducto\"=" + ((Inventario)elemento).idProducto);
                             break;
                         case 8:
+                            Orden ord = (Orden)info;
+                            dba.defineQuery("UPDATE orden SET \"noOrden\"=" + ord.noOrden + ",\"nombreRemitente\"='" + ord.nombreRemitente + "',\"empresaEnvio\"='" + ord.empresaEnvio + "',\"direccionEnvio\"='" + ord.direccionEnvio + "',\"noSeguimiento\"=" + ord.noSeguimiento + ",\"idCliente\"=" + ord.idCliente + " WHERE \"noOrden\"=" + ((Orden)elemento).noOrden);
                             break;
                         case 9:
+                            Producto prod = (Producto)info;
+                            dba.defineQuery("UPDATE producto SET fabricante='" + prod.fabricante + "',\"idProducto\"=" + prod.idProducto + ",modelo='" + prod.modelo + "',\"nombreProducto\"='" + prod.nombreProducto + "',\"tipoProducto\"='" + prod.tipoProducto + "',descripcion='" + prod.descripcion + "',precio=" + prod.precio + " WHERE \"idProducto\"=" + ((Producto)elemento).idProducto);
                             break;
                         case 10:
+                            Tienda tien = (Tienda)info;
+                            dba.defineQuery("UPDATE tienda SET \"codigoTienda\"=" + tien.codigoTienda + ",ubicacion='" + tien.ubicacion + "' WHERE \"codigoTienda\"=" + ((Tienda)elemento).codigoTienda);
                             break;
                         case 11:
+                            TieneEnCarrito carr = (TieneEnCarrito)info;
+                            dba.defineQuery("UPDATE \"tieneEnCarrito\" SET \"idCliente\"=" + carr.idCliente + ",\"idProducto\"=" + carr.idProducto + ",\"cantidadProductoCarrito\"=" + carr.cantidadProductoCarrito + " WHERE \"idCliente\"=" + ((TieneEnCarrito)elemento).idCliente + " AND \"idProducto\"=" + ((TieneEnCarrito)elemento).idProducto);
                             break;
                     }
                     break;
