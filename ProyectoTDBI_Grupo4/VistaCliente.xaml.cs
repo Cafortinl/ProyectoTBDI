@@ -130,7 +130,7 @@ namespace ProyectoTDBI_Grupo4
             dr = dba.executeQuery();
             while (dr.Read())
             {
-                listaOrden.Add(new TieneEnCarrito(dr.GetInt32(1), dr.GetInt32(0), dr.GetInt32(2)));
+                listaOrden.Add(new TieneEnCarrito(dr.GetInt32(0), dr.GetInt32(1), dr.GetInt32(2)));
             }
             TablaCarrito.ItemsSource = listaOrden;
             TablaCarrito.CanUserAddRows = false;
@@ -162,10 +162,41 @@ namespace ProyectoTDBI_Grupo4
             var info = TablaCarrito.ItemContainerGenerator.ItemFromContainer(row);
             dba.open();
             TieneEnCarrito carr = (TieneEnCarrito)info;
+            MessageBox.Show("idcliente g: "+idcliente+" , id: "+ carr.idCliente+" , prod: "+carr.idProducto);
             dba.defineQuery("DELETE FROM \"tieneEnCarrito\" WHERE \"idCliente\"=" + carr.idCliente + " AND \"idProducto\"=" + carr.idProducto);
             dba.executeQuery();
             dba.close();
             tablacarrito();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            dba.open();
+            dba.defineQuery("DELETE  FROM \"tieneEnCarrito\" WHERE \"idCliente\"="+idcliente );
+            dba.executeQuery();
+            dba.close();
+            tablacarrito();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            dba.open();
+            int pago=0;
+            NpgsqlDataReader dr,da;
+            dba.defineQuery("SELECT \"idProducto\" AND \"cantidadProductoCarrito\" FROM \"tieneEnCarrito\" WHERE \"idCliente\" = " + idcliente );
+            dr = dba.executeQuery();
+            while (dr.Read())
+            {
+                dba.defineQuery("SELECT \"precio\"");
+                
+            }
+
+            dba.defineQuery("DELETE  FROM \"tieneEnCarrito\" WHERE \"idCliente\"=" + idcliente);
+            dba.executeQuery();
+            dba.close();
+            tablacarrito();
+
+            MessageBox.Show("<-------|MENOSOTIRA|------->\n");
         }
     }
 }
