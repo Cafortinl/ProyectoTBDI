@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="Bodega" Height="450" Width="800">
     <Grid>
-        
+        <ComboBox x:Name="CB_Bodega" HorizontalAlignment="Left" Height="19" Margin="32,28,0,0" VerticalAlignment="Top" Width="149" SelectionChanged="CB_Bodega_SelectionChanged"/>
+        <DataGrid x:Name="DG_Bodega" HorizontalAlignment="Left" Height="141" Margin="247,28,0,0" VerticalAlignment="Top" Width="428"/>
+
     </Grid>
 </Window>
