@@ -19,5 +19,12 @@ namespace ProyectoTDBI_Grupo4
         {
         }
 
+        public bool hasNullElem()
+        {
+            if (ubicacion == "")
+                return true;
+            return false;
+        }
+
     }
 }

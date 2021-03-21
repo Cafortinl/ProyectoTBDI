@@ -27,5 +27,14 @@ namespace ProyectoTDBI_Grupo4
         {
         }
 
+        public bool hasNullElem()
+        {
+            if (fechaEmision == "")
+                return true;
+            if (direccion == "")
+                return true;
+            return false;
+        }
+
     }
 }

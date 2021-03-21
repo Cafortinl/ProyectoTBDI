@@ -27,5 +27,16 @@ namespace ProyectoTDBI_Grupo4
         {
         }
 
+        public bool hasNullElem()
+        {
+            if (nombreRemitente == "")
+                return true;
+            if (empresaEnvio == "")
+                return true;
+            if (direccionEnvio == "")
+                return true;
+            return false;
+        }
+
     }
 }

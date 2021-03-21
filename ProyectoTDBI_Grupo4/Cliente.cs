@@ -39,5 +39,18 @@ namespace ProyectoTDBI_Grupo4
         {
         }
 
+        public bool hasNullElem()
+        {
+            if (nombre == "")
+                return true;
+            if (direccionFacturacion == "")
+                return true;
+            if (nombreUsuario == "")
+                return true;
+            if (password == "")
+                return true;
+            return false;
+        }
+
     }
 }

@@ -18,5 +18,12 @@ namespace ProyectoTDBI_Grupo4
         public Almacen() 
         { 
         }
+
+        public bool hasNullElem()
+        {
+            if (ciudad == "")
+                return true;
+            return false;
+        }
     }
 }

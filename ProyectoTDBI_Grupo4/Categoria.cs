@@ -19,5 +19,12 @@ namespace ProyectoTDBI_Grupo4
         {
         }
 
+        public bool hasNullElem()
+        {
+            if (nombreCategoria == "")
+                return true;
+            return false;
+        }
+
     }
 }

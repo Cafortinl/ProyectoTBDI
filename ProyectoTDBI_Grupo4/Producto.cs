@@ -29,5 +29,20 @@ namespace ProyectoTDBI_Grupo4
         {
         }
 
+        public bool hasNullElem()
+        {
+            if (fabricante == "")
+                return true;
+            if (modelo == "")
+                return true;
+            if (nombreProducto == "")
+                return true;
+            if (tipoProducto == "")
+                return true;
+            if (descripcion == "")
+                return true;
+            return false;
+        }
+
     }
 }

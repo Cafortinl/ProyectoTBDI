@@ -27,5 +27,12 @@ namespace ProyectoTDBI_Grupo4
         {
         }
 
+        public bool hasNullElem()
+        {
+            if (cantidadProducto == 0)
+                return true;
+            return false;
+        }
+
     }
 }

@@ -22,6 +22,5 @@ namespace ProyectoTDBI_Grupo4
         public Inventario()
         {
         }
-
     }
 }
