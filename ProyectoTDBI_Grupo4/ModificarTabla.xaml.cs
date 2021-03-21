@@ -188,9 +188,14 @@ namespace ProyectoTDBI_Grupo4
                             dr = dba.executeQuery();
                             if (!dr.HasRows)
                             {
-                                dba.clearQuery();
-                                dr = null;
-                                dba.defineQuery("INSERT INTO almacen VALUES(" + a.codigoAlmacen + ",'" + a.ciudad + "')");
+                                if (!a.hasNullElem())
+                                {
+                                    dba.clearQuery();
+                                    dr = null;
+                                    dba.defineQuery("INSERT INTO almacen VALUES(" + a.codigoAlmacen + ",'" + a.ciudad + "')");
+                                }
+                                else
+                                    MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
@@ -201,9 +206,13 @@ namespace ProyectoTDBI_Grupo4
                             dr = dba.executeQuery();
                             if (!dr.HasRows)
                             {
-                                dba.clearQuery();
-                                dr = null;
-                                dba.defineQuery("INSERT INTO categoria VALUES(" + cat.idProducto + ",'" + cat.nombreCategoria + "')");
+                                if (!cat.hasNullElem())
+                                {
+                                    dba.clearQuery();
+                                    dr = null;
+                                    dba.defineQuery("INSERT INTO categoria VALUES(" + cat.idProducto + ",'" + cat.nombreCategoria + "')");
+                                }else
+                                    MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
@@ -214,9 +223,13 @@ namespace ProyectoTDBI_Grupo4
                             dr = dba.executeQuery();
                             if (!dr.HasRows)
                             {
-                                dba.clearQuery();
-                                dr = null;
-                                dba.defineQuery("INSERT INTO cliente VALUES(" + clien.idCliente + ",'" + clien.nombre + "'," + clien.isFrecuente + "," + clien.isVirtual + ",'" + clien.direccionFacturacion + "','" + clien.nombreUsuario + "','" + clien.password + "'," + clien.numeroTarjeta + ",'" + clien.tarjetaHabiente + "'," + clien.codigoSeguridad + "," + clien.mesVencimiento + "," + clien.yearVencimiento);
+                                if (!clien.hasNullElem())
+                                {
+                                    dba.clearQuery();
+                                    dr = null;
+                                    dba.defineQuery("INSERT INTO cliente VALUES(" + clien.idCliente + ",'" + clien.nombre + "'," + clien.isFrecuente + "," + clien.isVirtual + ",'" + clien.direccionFacturacion + "','" + clien.nombreUsuario + "','" + clien.password + "'," + clien.numeroTarjeta + ",'" + clien.tarjetaHabiente + "'," + clien.codigoSeguridad + "," + clien.mesVencimiento + "," + clien.yearVencimiento);
+                                }else
+                                    MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
@@ -240,9 +253,13 @@ namespace ProyectoTDBI_Grupo4
                             dr = dba.executeQuery();
                             if (!dr.HasRows)
                             {
-                                dba.clearQuery();
-                                dr = null;
-                                dba.defineQuery("INSERT INTO \"detalleFactura\" VALUES(" + det.noFactura + "," + det.total + "," + det.isv + ","+ det.cantidadProducto + "," + det.idProducto + "," + det.subtotal +")");
+                                if (!det.hasNullElem())
+                                {
+                                    dba.clearQuery();
+                                    dr = null;
+                                    dba.defineQuery("INSERT INTO \"detalleFactura\" VALUES(" + det.noFactura + "," + det.total + "," + det.isv + "," + det.cantidadProducto + "," + det.idProducto + "," + det.subtotal + ")");
+                                }else
+                                    MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
@@ -253,9 +270,13 @@ namespace ProyectoTDBI_Grupo4
                             dr = dba.executeQuery();
                             if (!dr.HasRows)
                             {
-                                dba.clearQuery();
-                                dr = null;
-                                dba.defineQuery("INSERT INTO factura VALUES(" + fact.noFactura + "," + fact.RTN + ",'" + fact.fechaEmision + "','" + fact.direccion + "'," + fact.idCliente + "," + fact.codigoTienda + ")");
+                                if (!fact.hasNullElem())
+                                {
+                                    dba.clearQuery();
+                                    dr = null;
+                                    dba.defineQuery("INSERT INTO factura VALUES(" + fact.noFactura + "," + fact.RTN + ",'" + fact.fechaEmision + "','" + fact.direccion + "'," + fact.idCliente + "," + fact.codigoTienda + ")");
+                                }else
+                                    MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
@@ -279,9 +300,13 @@ namespace ProyectoTDBI_Grupo4
                             dr = dba.executeQuery();
                             if (!dr.HasRows)
                             {
-                                dba.clearQuery();
-                                dr = null;
-                                dba.defineQuery("INSERT INTO orden VALUES(" + ord.noOrden + ",'" + ord.nombreRemitente + "','" + ord.empresaEnvio + "','" + ord.direccionEnvio + "'," + ord.noSeguimiento + "," + ord.idCliente + ")");
+                                if (!ord.hasNullElem())
+                                {
+                                    dba.clearQuery();
+                                    dr = null;
+                                    dba.defineQuery("INSERT INTO orden VALUES(" + ord.noOrden + ",'" + ord.nombreRemitente + "','" + ord.empresaEnvio + "','" + ord.direccionEnvio + "'," + ord.noSeguimiento + "," + ord.idCliente + ")");
+                                }else
+                                    MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
@@ -292,9 +317,13 @@ namespace ProyectoTDBI_Grupo4
                             dr = dba.executeQuery();
                             if (!dr.HasRows)
                             {
-                                dba.clearQuery();
-                                dr = null;
-                                dba.defineQuery("INSERT INTO producto VALUES('" + prod.fabricante + "'," + prod.idProducto + ",'" + prod.modelo + "','" + prod.nombreProducto + "','" + prod.tipoProducto + "','" + prod.descripcion + "'," + prod.precio + ")");
+                                if (!prod.hasNullElem())
+                                {
+                                    dba.clearQuery();
+                                    dr = null;
+                                    dba.defineQuery("INSERT INTO producto VALUES('" + prod.fabricante + "'," + prod.idProducto + ",'" + prod.modelo + "','" + prod.nombreProducto + "','" + prod.tipoProducto + "','" + prod.descripcion + "'," + prod.precio + ")");
+                                }else
+                                    MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
@@ -305,9 +334,13 @@ namespace ProyectoTDBI_Grupo4
                             dr = dba.executeQuery();
                             if (!dr.HasRows)
                             {
-                                dba.clearQuery();
-                                dr = null;
-                                dba.defineQuery("INSERT INTO tienda VALUES(" + tien.codigoTienda + ",'" + tien.ubicacion + "')");
+                                if (!tien.hasNullElem())
+                                {
+                                    dba.clearQuery();
+                                    dr = null;
+                                    dba.defineQuery("INSERT INTO tienda VALUES(" + tien.codigoTienda + ",'" + tien.ubicacion + "')");
+                                }else
+                                    MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
@@ -318,9 +351,13 @@ namespace ProyectoTDBI_Grupo4
                             dr = dba.executeQuery();
                             if (!dr.HasRows)
                             {
-                                dba.clearQuery();
-                                dr = null;
-                                dba.defineQuery("INSERT INTO \"tieneEnCarrito\" VALUES(" + carr.idCliente + "," + carr.idProducto + "," + carr.cantidadProductoCarrito + ")");
+                                if (!carr.hasNullElem())
+                                {
+                                    dba.clearQuery();
+                                    dr = null;
+                                    dba.defineQuery("INSERT INTO \"tieneEnCarrito\" VALUES(" + carr.idCliente + "," + carr.idProducto + "," + carr.cantidadProductoCarrito + ")");
+                                }else
+                                    MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
                                 MessageBox.Show("No puede repetir la llave de una tabla");
