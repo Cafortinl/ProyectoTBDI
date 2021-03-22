@@ -36,6 +36,7 @@ namespace ProyectoTDBI_Grupo4
         public Bodega()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             //user = u;
             NpgsqlDataReader dr;
             dba.open();

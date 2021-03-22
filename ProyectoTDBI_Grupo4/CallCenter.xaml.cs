@@ -39,6 +39,7 @@ namespace ProyectoTDBI_Grupo4
         public CallCenter()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             try
             { 
                 tablaOrden();

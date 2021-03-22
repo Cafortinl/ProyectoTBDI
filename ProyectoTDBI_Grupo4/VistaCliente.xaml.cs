@@ -40,6 +40,7 @@ namespace ProyectoTDBI_Grupo4
         public VistaCliente(string u)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             user = u;
             NpgsqlDataReader dr;
             dba.open();

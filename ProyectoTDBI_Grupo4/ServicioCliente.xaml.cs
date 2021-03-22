@@ -36,6 +36,7 @@ namespace ProyectoTDBI_Grupo4
         public ServicioCliente()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             NpgsqlDataReader dr;
             dba.open();
             List<String> infoTiend = new List<String>();

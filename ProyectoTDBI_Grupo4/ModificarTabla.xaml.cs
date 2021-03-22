@@ -38,6 +38,7 @@ namespace ProyectoTDBI_Grupo4
         public ModificarTabla(int op, int tabla, object elem, adminView avi)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             av = avi;
             opcion = op;
             tablaSelec = tabla;
