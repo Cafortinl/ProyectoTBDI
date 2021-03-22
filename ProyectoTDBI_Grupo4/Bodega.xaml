@@ -5,10 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="Bodega" Height="450" Width="800">
-    <Grid>
-        <ComboBox x:Name="CB_Bodega" HorizontalAlignment="Left" Height="19" Margin="32,28,0,0" VerticalAlignment="Top" Width="149" SelectionChanged="CB_Bodega_SelectionChanged"/>
-        <DataGrid x:Name="DG_Bodega" HorizontalAlignment="Left" Height="141" Margin="247,28,0,0" VerticalAlignment="Top" Width="428"/>
+        Title="Bodega" Height="541" Width="961">
+    <Grid Height="519" VerticalAlignment="Top">
+        <ComboBox x:Name="CB_Bodega" HorizontalAlignment="Left" Height="19" Margin="91,28,0,0" VerticalAlignment="Top" Width="369" SelectionChanged="CB_Bodega_SelectionChanged"/>
+        <DataGrid x:Name="DG_Bodega" HorizontalAlignment="Left" Height="235" Margin="32,65,0,0" VerticalAlignment="Top" Width="428" SelectionChanged="DG_Bodega_SelectionChanged"/>
+        <Button Content="Agregar Producto&#xA;" HorizontalAlignment="Left" Margin="472,217,0,0" VerticalAlignment="Top" Width="427" Height="23"/>
+        <Button Content="Modificar Inventario&#xA;" HorizontalAlignment="Left" Margin="472,276,0,0" VerticalAlignment="Top" Width="428" Height="24" Click="Button_Click"/>
+        <Label Content="Tienda:" HorizontalAlignment="Left" Margin="32,21,0,0" VerticalAlignment="Top"/>
+        <Button Content="Eliminar Inventario&#xA;" HorizontalAlignment="Left" Margin="472,245,0,0" VerticalAlignment="Top" Width="428" Height="24"/>
+        <Label Content="Codigo Almacen:" HorizontalAlignment="Left" Margin="472,66,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label Content="ID Producto:" HorizontalAlignment="Left" Margin="472,133,0,0" VerticalAlignment="Top" Width="83"/>
+        <Label Content="Cantidad:" HorizontalAlignment="Left" Margin="471,164,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label Content="Codigo Tienda:" HorizontalAlignment="Left" Margin="472,97,0,0" VerticalAlignment="Top" Width="101"/>
+        <TextBox x:Name="codigoAlmacen" HorizontalAlignment="Left" Margin="589,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="311" Height="26" IsEnabled="False"/>
+        <TextBox x:Name="idProducto1" HorizontalAlignment="Left" Margin="589,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="311" Height="26" IsEnabled="False"/>
+        <TextBox x:Name="cantidadProducto" HorizontalAlignment="Left" Margin="589,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="311" Height="26"/>
+        <TextBox x:Name="codigoTienda" HorizontalAlignment="Left" Margin="589,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="311" Height="26" IsEnabled="False"/>
+        <DataGrid x:Name="DG_Bodega_Copy" HorizontalAlignment="Left" Height="132" Margin="32,339,0,0" VerticalAlignment="Top" Width="868" SelectionChanged="DG_Bodega_SelectionChanged"/>
 
     </Grid>
 </Window>
