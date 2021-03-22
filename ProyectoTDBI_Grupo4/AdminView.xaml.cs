@@ -35,6 +35,7 @@ namespace ProyectoTDBI_Grupo4
         public adminView()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             List<string> tablas = new List<string> {"Almacen", "Categoria", "Cliente", "Contrato", "DetalleFactura", "Factura", "Inventario", "Orden", "Producto", "Tienda", "TieneEnCarrito"};
             cbTablaSelec.ItemsSource = tablas;
         }

@@ -25,9 +25,9 @@ namespace ProyectoTDBI_Grupo4
         public MainWindow()
         {
             InitializeComponent();
-         
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
-
+        
         private void btInicioSesion_Click(object sender, RoutedEventArgs e)
         {
             string Host = "proyectotdbi.ce6kih4lqvgw.us-east-1.rds.amazonaws.com";
