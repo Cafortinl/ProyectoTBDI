@@ -250,20 +250,11 @@ namespace ProyectoTDBI_Grupo4
                             break;
                         case 5:
                             DetalleFactura det = (DetalleFactura)info;
-                            dba.defineQuery("SELECT 1 from \"detalleFactura\" WHERE \"noFactura\"=" + det.noFactura);
-                            dr = dba.executeQuery();
-                            if (!dr.HasRows)
+                            if (!det.hasNullElem())
                             {
-                                if (!det.hasNullElem())
-                                {
-                                    dba.clearQuery();
-                                    dr = null;
-                                    dba.defineQuery("INSERT INTO \"detalleFactura\" VALUES(" + det.noFactura + "," + det.total + "," + det.isv + "," + det.cantidadProducto + "," + det.idProducto + "," + det.subtotal + ")");
-                                }else
-                                    MessageBox.Show("No puede dejar campos en blanco.");
-                            }
-                            else
-                                MessageBox.Show("No puede repetir la llave de una tabla");
+                                 dba.defineQuery("INSERT INTO \"detalleFactura\" VALUES(" + det.noFactura + "," + det.total + "," + det.isv + "," + det.cantidadProducto + "," + det.idProducto + "," + det.subtotal + ")");
+                            }else
+                                 MessageBox.Show("No puede dejar campos en blanco.");
                             break;
                         case 6:
                             Factura fact = (Factura)info;

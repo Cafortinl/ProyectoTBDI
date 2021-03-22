@@ -113,7 +113,7 @@ namespace ProyectoTDBI_Grupo4
                     dr = dba.executeQuery();
                     while (dr.Read())
                     {
-                        infoFac.Add(new Factura(dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(2), dr.GetInt32(3), dr.GetInt32(4), dr.GetInt32(5)));
+                        infoFac.Add(new Factura(dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6)));
                     }
                     dgInfo.ItemsSource = infoFac;
                     break;
