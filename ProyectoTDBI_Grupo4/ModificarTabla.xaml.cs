@@ -274,7 +274,7 @@ namespace ProyectoTDBI_Grupo4
                                 {
                                     dba.clearQuery();
                                     dr = null;
-                                    dba.defineQuery("INSERT INTO factura VALUES(" + fact.noFactura + "," + fact.RTN + ",'" + fact.fechaEmision + "','" + fact.direccion + "'," + fact.idCliente + "," + fact.codigoTienda + ")");
+                                    dba.defineQuery("INSERT INTO factura VALUES(" + fact.noFactura + "," + fact.RTN + ",'" + fact.fechaEmision + "','" + fact.direccion + "'," + fact.idCliente + "," + fact.codigoTienda + "," + fact.noOrden + ")");
                                 }else
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
@@ -304,7 +304,7 @@ namespace ProyectoTDBI_Grupo4
                                 {
                                     dba.clearQuery();
                                     dr = null;
-                                    dba.defineQuery("INSERT INTO orden VALUES(" + ord.noOrden + ",'" + ord.nombreRemitente + "','" + ord.empresaEnvio + "','" + ord.direccionEnvio + "'," + ord.noSeguimiento + "," + ord.idCliente + ")");
+                                    dba.defineQuery("INSERT INTO orden VALUES(" + ord.noOrden + ",'" + ord.nombreRemitente + "','" + ord.empresaEnvio + "','" + ord.direccionEnvio + "'," + ord.noSeguimiento + "," + ord.idCliente + ",'" + ord.estadoEnvio +"')");
                                 }else
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
@@ -389,7 +389,7 @@ namespace ProyectoTDBI_Grupo4
                             break;
                         case 6:
                             Factura fact = (Factura)info;
-                            dba.defineQuery("UPDATE factura SET \"noFactura\"=" + fact.noFactura + ",RTN=" + fact.RTN + ",\"fechaEmision\"='" + fact.fechaEmision + "',direccion='" + fact.direccion + "',\"idCliente\"=" + fact.idCliente + ",\"codigoTienda\"=" + fact.codigoTienda + " WHERE \"noFactura\"=" + ((Factura)elemento).noFactura);
+                            dba.defineQuery("UPDATE factura SET \"noFactura\"=" + fact.noFactura + ",RTN=" + fact.RTN + ",\"fechaEmision\"='" + fact.fechaEmision + "',direccion='" + fact.direccion + "',\"idCliente\"=" + fact.idCliente + ",\"codigoTienda\"=" + fact.codigoTienda + ",\"noOrden\"=" + fact.noOrden + " WHERE \"noFactura\"=" + ((Factura)elemento).noFactura);
                             break;
                         case 7:
                             Inventario inv = (Inventario)info;
@@ -397,7 +397,7 @@ namespace ProyectoTDBI_Grupo4
                             break;
                         case 8:
                             Orden ord = (Orden)info;
-                            dba.defineQuery("UPDATE orden SET \"noOrden\"=" + ord.noOrden + ",\"nombreRemitente\"='" + ord.nombreRemitente + "',\"empresaEnvio\"='" + ord.empresaEnvio + "',\"direccionEnvio\"='" + ord.direccionEnvio + "',\"noSeguimiento\"=" + ord.noSeguimiento + ",\"idCliente\"=" + ord.idCliente + " WHERE \"noOrden\"=" + ((Orden)elemento).noOrden);
+                            dba.defineQuery("UPDATE orden SET \"noOrden\"=" + ord.noOrden + ",\"nombreRemitente\"='" + ord.nombreRemitente + "',\"empresaEnvio\"='" + ord.empresaEnvio + "',\"direccionEnvio\"='" + ord.direccionEnvio + "',\"noSeguimiento\"=" + ord.noSeguimiento + ",\"idCliente\"=" + ord.idCliente + ",\"estadoEnvio\"='" + ord.estadoEnvio  + "' WHERE \"noOrden\"=" + ((Orden)elemento).noOrden);
                             break;
                         case 9:
                             Producto prod = (Producto)info;

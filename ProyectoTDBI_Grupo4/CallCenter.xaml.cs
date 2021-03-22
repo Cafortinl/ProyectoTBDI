@@ -86,7 +86,7 @@ namespace ProyectoTDBI_Grupo4
             dr = dba.executeQuery();
             while (dr.Read())
             {
-                listaOrden.Add(new Orden(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5)));
+                listaOrden.Add(new Orden(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetString(6)));
             }
 
             DataGrid_Orden.ItemsSource = listaOrden;

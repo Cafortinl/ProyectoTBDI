@@ -85,6 +85,10 @@ namespace ProyectoTDBI_Grupo4
                                 VistaCliente vc = new VistaCliente(Usuario);
                                 vc.Show();
                                 break;
+                            case 6:
+                                vistaCarrier ve = new vistaCarrier(Usuario);
+                                ve.Show();
+                                break;
                         }
                     }
                     else

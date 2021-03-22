@@ -12,8 +12,9 @@ namespace ProyectoTDBI_Grupo4
         public string direccionEnvio { get; set; }
         public int noSeguimiento { get; set; }
         public int idCliente { get; set; }
+        public string estadoEnvio { get; set; }
 
-        public Orden(int n, string nom, string emp, string dir, int seg, int cl)
+        public Orden(int n, string nom, string emp, string dir, int seg, int cl, string e)
         {
             noOrden = n;
             nombreRemitente = nom;
@@ -21,6 +22,7 @@ namespace ProyectoTDBI_Grupo4
             direccionEnvio = dir;
             noSeguimiento = seg;
             idCliente = cl;
+            estadoEnvio = e;
         }
 
         public Orden()

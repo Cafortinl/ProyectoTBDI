@@ -12,8 +12,9 @@ namespace ProyectoTDBI_Grupo4
         public string direccion { get; set; }
         public int idCliente { get; set; }
         public int codigoTienda { get; set; }
+        public int noOrden { get; set; }
 
-        public Factura(int n, int r, string f, string dir, int c, int t)
+        public Factura(int n, int r, string f, string dir, int c, int t, int o)
         {
             noFactura = n;
             RTN = r;
@@ -21,6 +22,7 @@ namespace ProyectoTDBI_Grupo4
             direccion = dir;
             idCliente = c;
             codigoTienda = t;
+            noOrden = o;
         }
 
         public Factura()
