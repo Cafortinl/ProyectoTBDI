@@ -37,6 +37,57 @@ namespace ProyectoTDBI_Grupo4
         {
             InitializeComponent();
             usuario = u;
+            List<string> estados = new List<string> {"En espera", "En proceso", "Entregado", "Destruido"};
+            lbNombreEmpresa.Content = usuario;
+            cbEstados.ItemsSource = estados;
+            updateTable();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+
+        public void updateTable()
+        {
+            dba.open();
+            dba.defineQuery("SELECT * FROM orden WHERE \"empresaEnvio\"='" + usuario + "'");
+            NpgsqlDataReader dr = dba.executeQuery();
+            List<Orden> ordenes = new List<Orden>();
+            while (dr.Read())
+            {
+                ordenes.Add(new Orden(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetString(6)));
+            }
+            dgOrdenes.ItemsSource = ordenes;
+            dgOrdenes.CanUserAddRows = false;
+            dba.close();
+        }
+
+        private void btModEstado_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dgOrdenes.SelectedIndex;
+            if (index > -1)
+            {
+                DataGridRow row = dgOrdenes.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+                var info = dgOrdenes.ItemContainerGenerator.ItemFromContainer(row);
+                Orden o = (Orden)info;
+                o.estadoEnvio = (string)cbEstados.SelectedItem;
+                dba.open();
+                if (((string)cbEstados.SelectedItem).Equals("Entregado"))
+                {
+                    dba.defineQuery("DELETE FROM orden WHERE \"noOrden\"=" + o.noOrden);
+                }
+                else
+                {
+                    dba.defineQuery("UPDATE orden SET \"estadoEnvio\"='" + o.estadoEnvio + "' WHERE \"noOrden\"=" + o.noOrden);
+                }
+                dba.executeQuery();
+                dba.close();
+                updateTable();
+            }
+            else
+                MessageBox.Show("Debe seleccionar una orden para cambiarle el estado.");
+        }
+
+        private void btSalir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

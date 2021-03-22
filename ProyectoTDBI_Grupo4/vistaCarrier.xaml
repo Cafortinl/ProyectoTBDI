@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="vistaCarrier" Height="450" Width="800">
+        Title="Empresa de envios" Height="450" Width="800">
     <Grid>
-        
+        <Label x:Name="lbNombreEmpresa" Content="Empresa envio" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <DataGrid x:Name="dgOrdenes" Margin="174,83,25,39"/>
+        <ComboBox x:Name="cbEstados" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Estado envio" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btModEstado" Content="Actualizar estado" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="120" Click="btModEstado_Click"/>
+        <Label Content="Ordenes" HorizontalAlignment="Left" Margin="174,57,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btSalir" Content="Cerrar sesion" HorizontalAlignment="Left" Margin="702,50,0,0" VerticalAlignment="Top" Click="btSalir_Click"/>
+
     </Grid>
 </Window>
