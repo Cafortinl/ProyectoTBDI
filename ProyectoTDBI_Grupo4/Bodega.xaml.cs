@@ -54,7 +54,7 @@ namespace ProyectoTDBI_Grupo4
             dba.defineQuery("SELECT * FROM producto");
             dr = dba.executeQuery();
             while (dr.Read())
-            {
+            { 
                 listaOrden.Add(new Producto(dr.GetString(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
             }
             tablaGenerales.ItemsSource = listaOrden;
@@ -63,13 +63,12 @@ namespace ProyectoTDBI_Grupo4
         }
         private void ElMetodoQueFortinJodeParaQueHaga()
         {
+            dba.open();
             string ojayoporco = (Convert.ToString(CB_Bodega.SelectedItem).Split(","))[2];
             if(ojayoporco.StartsWith(' '))
             {
                 ojayoporco = ojayoporco.Remove(0, 1);
             }
-            MessageBox.Show("Lugar:" + ojayoporco);
-            dba.open();
             NpgsqlDataReader dr;
             List<int> codigoAlmacen = new List<int>();
             dba.defineQuery("SELECT \"codigoAlmacen\" FROM almacen WHERE ciudad='"+ojayoporco+"'");
@@ -116,30 +115,34 @@ namespace ProyectoTDBI_Grupo4
                 DataGridRow row = DG_Bodega.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
                 var info = DG_Bodega.ItemContainerGenerator.ItemFromContainer(row);
                 Producto a = (Producto)info;
-                idProducto.Text = Convert.ToString(a.idProducto);
                 NpgsqlDataReader dr;
                 dba.open();
                 string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[0];
-                //codigoTienda.Text = ojayoporco;
-                //ultiTienda = Convert.ToInt32(ojayoporco);
                 dba.defineQuery("SELECT \"codigoAlmacen\" FROM inventario WHERE \"codigoTienda\" = " + ojayoporco);
                 dr = dba.executeQuery();
                 if (dr.HasRows)
                 {
                     dr.Read();
                     ElMetodoQueFortinJodeParaQueHaga();
-                    dba.close();
+                    
                 }
             }
             else
             {
                 ElMetodoQueFortinJodeParaQueHaga();
             }
+            dba.close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Convert.ToInt32(cantidadProducto.Text)>0)
+            {
+                dba.open();
+                dba.defineQuery("INSERT INTO inventario VALUES ("+ Convert.ToInt32(codigoTienda.Text) + ","+ (int)CB_codigoAlmacen.SelectedItem +","+ Convert.ToInt32(idProducto.Text) +","+ Convert.ToInt32(cantidadProducto.Text) + ")");
+                dba.executeQuery();
+                dba.close();
+            }
         }
 
         private void tablaGenerales_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -159,6 +162,11 @@ namespace ProyectoTDBI_Grupo4
                 ElMetodoQueFortinJodeParaQueHaga();
             }
             dba.close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
