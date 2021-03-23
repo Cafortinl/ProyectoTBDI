@@ -32,12 +32,11 @@ namespace ProyectoTDBI_Grupo4
                 User,
                 Password);
         private DBAdmin dba = new DBAdmin(connString);
-        //private static string user;
+
         public Bodega()
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            //user = u;
             NpgsqlDataReader dr;
             dba.open();
             List<String> infoTiend = new List<String>();
@@ -54,6 +53,7 @@ namespace ProyectoTDBI_Grupo4
         private void CB_Bodega_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             tablaProducto();
+            
         }
 
         private void tablaProducto()
@@ -74,5 +74,58 @@ namespace ProyectoTDBI_Grupo4
 
         }
 
+        private void DG_Bodega_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = DG_Bodega.SelectedIndex;
+            if (index == -1)
+            {
+                DataGridRow row = DG_Bodega.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+                var info = DG_Bodega.ItemContainerGenerator.ItemFromContainer(row);
+                Producto a = (Producto)info;
+                idProducto1.Text = Convert.ToString(a.idProducto);
+                string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[0];
+                codigoTienda.Text = ojayoporco;
+                dba.open();
+                NpgsqlDataReader dr;
+                dba.defineQuery("SELECT \"codigoAlmacen\" FROM inventario WHERE \"codigoTienda\" = " + ojayoporco);
+                dr = dba.executeQuery();
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    codigoAlmacen.Text = Convert.ToString(Convert.ToInt32(dr[0]));
+                    dba.close();
+                }
+                else
+                {
+                    codigoAlmacen.Text = "Almacen vacio";
+                }
+            }
+            else
+            {
+                MessageBox.Show(":D");
+            }
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NpgsqlDataReader dr;
+            List<Producto> listaOrden = new List<Producto>();
+            dba.open();
+            dba.defineQuery("SELECT * FROM producto");
+            dr = dba.executeQuery();
+            while (dr.Read())
+            {
+                listaOrden.Add(new Producto(dr.GetString(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
+            }
+            DG_Bodega.ItemsSource = listaOrden;
+            DG_Bodega.CanUserAddRows = false;
+            dba.close();
+        }
     }
 }
