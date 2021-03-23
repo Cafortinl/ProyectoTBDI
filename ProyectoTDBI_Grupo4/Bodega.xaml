@@ -7,21 +7,22 @@
         mc:Ignorable="d"
         Title="Bodega" Height="565" Width="961">
     <Grid Height="542" VerticalAlignment="Top">
-        <ComboBox x:Name="CB_Bodega" HorizontalAlignment="Left" Height="19" Margin="89,321,0,0" VerticalAlignment="Top" Width="375" SelectionChanged="CB_Bodega_SelectionChanged"/>
-        <DataGrid x:Name="DG_Bodega" HorizontalAlignment="Left" Height="129" Margin="30,360,0,0" VerticalAlignment="Top" Width="867" SelectionChanged="DG_Bodega_SelectionChanged"/>
-        <Button Content="Agregar Producto&#xA;" HorizontalAlignment="Left" Margin="475,210,0,0" VerticalAlignment="Top" Width="428" Height="23" Click="Button_Click"/>
-        <Button Content="Modificar Inventario&#xA;" HorizontalAlignment="Left" Margin="475,269,0,0" VerticalAlignment="Top" Width="428" Height="24"/>
-        <Label Content="Tienda:" HorizontalAlignment="Left" Margin="30,314,0,0" VerticalAlignment="Top" Width="97"/>
-        <Button Content="Eliminar Inventario&#xA;" HorizontalAlignment="Left" Margin="475,238,0,0" VerticalAlignment="Top" Width="428" Height="24"/>
-        <Label Content="Codigo Almacen:" HorizontalAlignment="Left" Margin="475,59,0,0" VerticalAlignment="Top" Width="102"/>
-        <Label Content="ID Producto:" HorizontalAlignment="Left" Margin="475,126,0,0" VerticalAlignment="Top" Width="84"/>
-        <Label Content="Cantidad:" HorizontalAlignment="Left" Margin="475,157,0,0" VerticalAlignment="Top" Width="112"/>
+        <ComboBox x:Name="CB_Bodega" HorizontalAlignment="Left" Height="26" Margin="88,347,0,0" VerticalAlignment="Top" Width="376" SelectionChanged="CB_Bodega_SelectionChanged"/>
+        <DataGrid x:Name="DG_Bodega" HorizontalAlignment="Left" Height="129" Margin="30,382,0,0" VerticalAlignment="Top" Width="867" SelectionChanged="DG_Bodega_SelectionChanged"/>
+        <Button Content="Agregar Producto&#xA;" HorizontalAlignment="Left" Margin="475,252,0,0" VerticalAlignment="Top" Width="428" Height="23" Click="Button_Click"/>
+        <Button Content="Modificar Inventario&#xA;" HorizontalAlignment="Left" Margin="475,311,0,0" VerticalAlignment="Top" Width="428" Height="24"/>
+        <Label Content="Tienda:" HorizontalAlignment="Left" Margin="30,347,0,0" VerticalAlignment="Top" Width="96"/>
+        <Button Content="Eliminar Inventario&#xA;" HorizontalAlignment="Left" Margin="475,280,0,0" VerticalAlignment="Top" Width="428" Height="24"/>
+        <Label Content="Codigo Almacen:" HorizontalAlignment="Left" Margin="475,50,0,0" VerticalAlignment="Top" Width="102"/>
+        <Label Content="ID Producto:" HorizontalAlignment="Left" Margin="475,132,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Cantidad:" HorizontalAlignment="Left" Margin="475,174,0,0" VerticalAlignment="Top" Width="112"/>
         <Label Content="Codigo Tienda:" HorizontalAlignment="Left" Margin="475,90,0,0" VerticalAlignment="Top" Width="102"/>
-        <TextBox x:Name="idProducto" HorizontalAlignment="Left" Margin="593,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Height="26" IsEnabled="False"/>
-        <TextBox x:Name="cantidadProducto" HorizontalAlignment="Left" Margin="593,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Height="26"/>
+        <TextBox x:Name="idProducto" HorizontalAlignment="Left" Margin="593,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Height="26" IsEnabled="False"/>
+        <TextBox x:Name="cantidadProducto" HorizontalAlignment="Left" Margin="593,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Height="26"/>
         <TextBox x:Name="codigoTienda" HorizontalAlignment="Left" Margin="593,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Height="26" IsEnabled="False"/>
-        <DataGrid x:Name="tablaGenerales" Margin="30,42,497,249" SelectionChanged="tablaGenerales_SelectionChanged"/>
-        <Label Content="Todos los productos&#xD;&#xA;" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="tablaGenerales" Margin="30,53,497,207" SelectionChanged="tablaGenerales_SelectionChanged"/>
+        <Label Content="Todos los productos&#xD;&#xA;" HorizontalAlignment="Left" Margin="30,26,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CB_codigoAlmacen" HorizontalAlignment="Left" Height="23" Margin="593,53,0,0" VerticalAlignment="Top" Width="310" SelectionChanged="CB_Bodega_SelectionChanged"/>
 
     </Grid>
 </Window>

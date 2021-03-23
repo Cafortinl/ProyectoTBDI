@@ -61,10 +61,30 @@ namespace ProyectoTDBI_Grupo4
             tablaGenerales.CanUserAddRows = false;
             dba.close();
         }
+        private void ElMetodoQueFortinJodeParaQueHaga()
+        {
+            string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[2];
+            if (ojayoporco[0].Equals(" "))
+            {
+                ojayoporco = ojayoporco.Substring(1);
+            }
+            dba.open();
+            NpgsqlDataReader dr;
+            List<int> codigoAlmacen = new List<int>();
+            dba.defineQuery("SELECT \"codigoAlmacen\" FROM almacen WHERE ciudad = '"+ojayoporco+"'");
+            dr = dba.executeQuery();
+            while (dr.Read())
+            {
+                codigoAlmacen.Add(dr.GetInt32(0));
+            }
+            CB_codigoAlmacen.ItemsSource = codigoAlmacen;
+            dba.close();
+        }
 
         private void CB_Bodega_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             tablaProducto();
+            ElMetodoQueFortinJodeParaQueHaga();
             string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[0];
             codigoTienda.Text = ojayoporco;
         }
@@ -106,13 +126,13 @@ namespace ProyectoTDBI_Grupo4
                 if (dr.HasRows)
                 {
                     dr.Read();
-                    codigoAlmacen.Text = Convert.ToString(Convert.ToInt32(dr[0]));
+                    ElMetodoQueFortinJodeParaQueHaga();
                     dba.close();
                 }
             }
             else
             {
-                codigoAlmacen.Text = "Almacen vacio";
+                ElMetodoQueFortinJodeParaQueHaga();
             }
         }
 
@@ -135,8 +155,7 @@ namespace ProyectoTDBI_Grupo4
             dr.Read();
             if (dr.HasRows)
             {
-                
-                codigoAlmacen.Text = Convert.ToString(Convert.ToInt32(dr[0]));   
+                ElMetodoQueFortinJodeParaQueHaga();
             }
             dba.close();
         }
