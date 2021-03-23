@@ -65,6 +65,8 @@ namespace ProyectoTDBI_Grupo4
         private void CB_Bodega_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             tablaProducto();
+            string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[0];
+            codigoTienda.Text = ojayoporco;
         }
 
         private void tablaProducto()
@@ -88,22 +90,25 @@ namespace ProyectoTDBI_Grupo4
         private void DG_Bodega_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int index = DG_Bodega.SelectedIndex;
-            DataGridRow row = DG_Bodega.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
-            var info = DG_Bodega.ItemContainerGenerator.ItemFromContainer(row);
-            Producto a = (Producto)info;
-            idProducto.Text = Convert.ToString(a.idProducto);
-            NpgsqlDataReader dr;
-            dba.open();
-            string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[0];
-            codigoTienda.Text = ojayoporco;
-            ultiTienda = Convert.ToInt32(ojayoporco);
-            dba.defineQuery("SELECT \"codigoAlmacen\" FROM inventario WHERE \"codigoTienda\" = " + ojayoporco);
-            dr = dba.executeQuery();
-            if (dr.HasRows)
+            if (index > -1)
             {
-                dr.Read();
-                codigoAlmacen.Text = Convert.ToString(Convert.ToInt32(dr[0]));
-                dba.close();
+                DataGridRow row = DG_Bodega.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+                var info = DG_Bodega.ItemContainerGenerator.ItemFromContainer(row);
+                Producto a = (Producto)info;
+                idProducto.Text = Convert.ToString(a.idProducto);
+                NpgsqlDataReader dr;
+                dba.open();
+                string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[0];
+                //codigoTienda.Text = ojayoporco;
+                //ultiTienda = Convert.ToInt32(ojayoporco);
+                dba.defineQuery("SELECT \"codigoAlmacen\" FROM inventario WHERE \"codigoTienda\" = " + ojayoporco);
+                dr = dba.executeQuery();
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    codigoAlmacen.Text = Convert.ToString(Convert.ToInt32(dr[0]));
+                    dba.close();
+                }
             }
             else
             {
