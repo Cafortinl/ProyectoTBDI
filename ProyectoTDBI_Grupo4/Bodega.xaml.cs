@@ -63,15 +63,16 @@ namespace ProyectoTDBI_Grupo4
         }
         private void ElMetodoQueFortinJodeParaQueHaga()
         {
-            string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[2];
-            if (ojayoporco[0].Equals(" "))
+            string ojayoporco = (Convert.ToString(CB_Bodega.SelectedItem).Split(","))[2];
+            if(ojayoporco.StartsWith(' '))
             {
-                ojayoporco = ojayoporco.Substring(1);
+                ojayoporco = ojayoporco.Remove(0, 1);
             }
+            MessageBox.Show("Lugar:" + ojayoporco);
             dba.open();
             NpgsqlDataReader dr;
             List<int> codigoAlmacen = new List<int>();
-            dba.defineQuery("SELECT \"codigoAlmacen\" FROM almacen WHERE ciudad = '"+ojayoporco+"'");
+            dba.defineQuery("SELECT \"codigoAlmacen\" FROM almacen WHERE ciudad='"+ojayoporco+"'");
             dr = dba.executeQuery();
             while (dr.Read())
             {
