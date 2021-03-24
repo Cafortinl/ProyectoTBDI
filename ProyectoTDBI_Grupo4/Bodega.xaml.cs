@@ -209,7 +209,7 @@ namespace ProyectoTDBI_Grupo4
         {
             if (var != " ")
             {
-                var = Convert.ToString( CB_codigoAlmacen.SelectedItem);
+                var = Convert.ToString(CB_codigoAlmacen.SelectedItem);
                 dba.open();
                 dba.defineQuery("UPDATE inventario SET \"codigoTienda\"=" + Convert.ToInt32(codigoTienda.Text)  + ",\"codigoAlmacen\"=" + Convert.ToInt32(var) + ",\"idProducto\"=" + Convert.ToInt32(idProducto.Text) + ",\"cantidadInventario\"=" +
                 Convert.ToInt32(cantidadProducto.Text) + " WHERE \"codigoTienda\"=" + inv.codigoTienda + " AND \"codigoAlmacen\"=" + inv.codigoAlmacen  + " AND \"idProducto\"=" + inv.idProducto +
