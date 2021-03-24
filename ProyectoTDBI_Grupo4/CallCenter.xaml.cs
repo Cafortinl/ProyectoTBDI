@@ -40,42 +40,25 @@ namespace ProyectoTDBI_Grupo4
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            try
-            { 
-                tablaOrden();
-                tablaCliente();
-            }
-            catch (Exception msg)
-            {
-                MessageBox.Show(msg.ToString());
-                throw;
-            }
+            tablaOrden();
+            tablaCliente();
+            nOrdenYnSeguimiento();
         }
 
         private void Cll_BtCompra_Click(object sender, RoutedEventArgs e)
         {
-            NpgsqlDataReader dr;
             dba.open();
-
-            int idCliente = Convert.ToInt32(Cll_idCliente.Text);
-            int nOrden = Convert.ToInt32(Cll_nOrden.Text);
-            int nSeguimiento = Convert.ToInt32(Cll_nSeguimiento.Text);
-            string nombreRemitente = Cll_nRemitente.Text;
-            string empresaEnvio = Cll_EmpresaEnvio.Text;
-            string DireccionEnvio = Cll_DirreccionEnvio.Text;
-            
-            string query = "INSERT INTO orden VALUES (@nOrden,@nombreRemitente,@empresaEnvio,@DireccionEnvio,@nSeguimiento,@idCliente)";
-            dba.defineQuery(query);
-            dba.insert(nOrden, nombreRemitente, empresaEnvio, DireccionEnvio, nSeguimiento, idCliente);
-            
+            dba.defineQuery("INSERT INTO orden VALUES("+Convert.ToInt32(Cll_nOrden.Text)+ ",'"+ Cll_nRemitente.Text +"','"+ Cll_EmpresaEnvio.Text+"','"+ Cll_DirreccionEnvio.Text+"',"+ Convert.ToInt32(Cll_nSeguimiento.Text)+","+ Convert.ToInt32(Cll_idCliente.Text)+",'En espera')");
+            dba.executeQuery();
             dba.close();
-            tablaOrden();
             Cll_idCliente.Text = "";
             Cll_nOrden.Text = "";
             Cll_nSeguimiento.Text = "";
             Cll_nRemitente.Text = "";
             Cll_EmpresaEnvio.Text = "";
             Cll_DirreccionEnvio.Text = "";
+            tablaOrden();
+            nOrdenYnSeguimiento();
         }
 
         private void tablaOrden()
@@ -89,11 +72,11 @@ namespace ProyectoTDBI_Grupo4
             {
                 listaOrden.Add(new Orden(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetString(6)));
             }
-
             DataGrid_Orden.ItemsSource = listaOrden;
+            DataGrid_Orden.CanUserAddRows = false;
             dba.close();
-            
         }
+
         private void tablaCliente()
         {
             NpgsqlDataReader dr;
@@ -106,41 +89,33 @@ namespace ProyectoTDBI_Grupo4
                 infoClien.Add(new Cliente(dr.GetInt32(0), dr.GetString(1), dr.GetBoolean(2), dr.GetBoolean(3), dr.GetString(4), dr.GetString(5), dr.GetString(6), dr.GetInt32(7), dr.GetString(8), dr.GetInt32(9), dr.GetInt32(10), dr.GetInt32(11)));
             }
             DataGrid_Clientes.ItemsSource = infoClien;
+            DataGrid_Clientes.CanUserAddRows = false;
             dba.close();
            
         }
+
+        private void DataGrid_Clientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = DataGrid_Clientes.SelectedIndex;
+            DataGridRow row = DataGrid_Clientes.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
+            var info = DataGrid_Clientes.ItemContainerGenerator.ItemFromContainer(row);
+            Cliente a = (Cliente)info;
+            Cll_idCliente.Text = Convert.ToString(a.idCliente);
+        }
+
+        private void nOrdenYnSeguimiento()
+        {
+            dba.open();
+            NpgsqlDataReader dr;
+            dba.defineQuery("SELECT COUNT (\"noOrden\") FROM orden");
+            dr = dba.executeQuery();
+            if (dr.HasRows)
+            {
+                dr.Read();
+                Cll_nOrden.Text=Convert.ToString(dr.GetInt32(0)+1);
+                Cll_nSeguimiento.Text = Convert.ToString(dr.GetInt32(0)+1);
+            }
+            dba.close();
+        }
     }
 }
-
-/*List<Cliente> lista = new List<Cliente>();
-                    int cont = 0;
-                    while (dr.Read())
-                    {
-                        lista.Add(new Cliente(Convert.ToInt32(dr[0]), Convert.ToString(dr[1]), Convert.ToBoolean(dr[2]), Convert.ToBoolean(dr[3]), Convert.ToString(dr[4]), Convert.ToString(dr[5]), Convert.ToString(dr[6]), Convert.ToInt32(dr[7]), Convert.ToString(dr[8]), Convert.ToInt32(dr[9]), Convert.ToInt32(dr[10]), Convert.ToInt32(dr[11])));
-                        if (Convert.ToInt32(dr[0]) == idCliente)
-                        {
-                            posi = cont;
-                        }
-                        cont++;
-                    }
-                    if (posi != -1)
-                    {
-
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("No encontro al cliente");
-                    }*/
-
-
-//string query= "INSERT INTO \"orden\" VALUES " + nOrden+",'{"+nombreRemitente+"}','{"+empresaEnvio+"}','{"+DireccionEnvio+"}',"+nSeguimiento+","+idCliente+")";
-/*SqlCommand comando = new SqlCommand(string.Format("Insert Into orden (noOrden,nombreRemitente,empresaEnvio,direccionEnvio,noSeguimiento,idCliente) " +
-    "values ('{0},'{1}','{2}','{3}','{4}','{5}' ", nOrden, nombreRemitente, empresaEnvio, DireccionEnvio, nSeguimiento, idCliente));
-retorno = comando.ExecuteNonQuery();
-if (retorno >0 )
-{
-    MessageBox.Show("Lo hicimosssssss");
-}
-//NpgsqlCommand ejecutor = new NpgsqlCommand(query, dba.getConn()); //(noOrden,nombreRemitente,empresaEnvio,direccionEnvio,noSeguimiento,idCliente)
-//ejecutor.ExecuteNonQuery();*/

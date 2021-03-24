@@ -40,16 +40,6 @@ namespace ProyectoTDBI_Grupo4
         {
             return dr = cmd.ExecuteReader();
         }
-        public void insert(int nOrden, string nombreRemitente,string empresaEnvio, string DireccionEnvio, int nSeguimiento, int idCliente)
-        {
-            cmd.Parameters.AddWithValue("@nOrden", nOrden);
-            cmd.Parameters.AddWithValue("@nombreRemitente", nombreRemitente);
-            cmd.Parameters.AddWithValue("@empresaEnvio", empresaEnvio);
-            cmd.Parameters.AddWithValue("@DireccionEnvio", DireccionEnvio);
-            cmd.Parameters.AddWithValue("@nSeguimiento", nSeguimiento);
-            cmd.Parameters.AddWithValue("@idCliente", idCliente);
-            cmd.ExecuteNonQuery();
-        }
 
         public NpgsqlCommand getcmd()
         {

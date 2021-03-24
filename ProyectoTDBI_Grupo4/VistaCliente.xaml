@@ -5,22 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="VistaCliente" Height="550" Width="814">
+        Title="VistaCliente" Height="700" Width="1100">
     <Grid Margin="0,0,0,6">
-        <ComboBox x:Name="CB_TiendaSeleccionada" HorizontalAlignment="Left" Margin="314,20,0,0" VerticalAlignment="Top" Width="431" SelectionChanged="CB_TiendaSeleccionada_SelectionChanged"/>
-        <DataGrid x:Name="TablaProducto" Margin="261,53,69,274" SelectionChanged="TablaProducto_SelectionChanged"/>
-        <DataGrid x:Name="TablaCarrito" Margin="261,313,69,28"/>
-        <Button Content="Vaciar" HorizontalAlignment="Left" Margin="36,364,0,0" VerticalAlignment="Top" Width="188" Height="32" Click="Button_Click_2"/>
-        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="36,313,0,0" VerticalAlignment="Top" Width="188" Height="32" Click="Button_Click"/>
-        <Button Content="Agregar a carrito&#xD;&#xA;" HorizontalAlignment="Left" Margin="43,197,0,0" VerticalAlignment="Top" Width="199" Height="26" Click="Button_Click_1"/>
-        <Button Content="Comprar" HorizontalAlignment="Left" Margin="36,416,0,0" VerticalAlignment="Top" Width="188" Height="33" Click="Button_Click_3"/>
-        <Button Content="Salir" HorizontalAlignment="Left" Margin="36,468,0,0" VerticalAlignment="Top" Width="188" Height="32" Click="Button_Click_4"/>
-        <TextBox x:Name="VC_Cantidad" HorizontalAlignment="Left" Margin="116,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Height="32" Text="1"/>
-        <Label Content="Cantidad:&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="36,148,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="43,109,0,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox x:Name="VC_idproducto" HorizontalAlignment="Left" Margin="116,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Height="31" IsEnabled="False"/>
-        <Label Content="Id Producto:&#xD;&#xA;" HorizontalAlignment="Left" Margin="36,93,0,0" VerticalAlignment="Top" Height="29"/>
-        <Label Content="Tienda:" HorizontalAlignment="Left" Margin="261,18,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CB_TiendaSeleccionada" HorizontalAlignment="Left" Margin="360,18,0,0" VerticalAlignment="Top" Width="700" SelectionChanged="CB_TiendaSeleccionada_SelectionChanged" Height="31"/>
+        <DataGrid x:Name="TablaProducto" Margin="285,72,40,339" SelectionChanged="TablaProducto_SelectionChanged"/>
+        <DataGrid x:Name="TablaCarrito" Margin="285,403,40,38"/>
+        <Button Content="Vaciar" HorizontalAlignment="Left" Margin="40,469,0,0" VerticalAlignment="Top" Width="199" Height="32" Click="Button_Click_2" FontWeight="Bold"/>
+        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="40,418,0,0" VerticalAlignment="Top" Width="199" Height="32" Click="Button_Click" FontWeight="Bold"/>
+        <Button Content="Agregar a carrito&#xD;&#xA;" HorizontalAlignment="Left" Margin="40,233,0,0" VerticalAlignment="Top" Width="193" Height="32" Click="Button_Click_1" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.304"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.528"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Comprar" HorizontalAlignment="Left" Margin="40,521,0,0" VerticalAlignment="Top" Width="199" Height="33" Click="Button_Click_3" FontWeight="Bold"/>
+        <Button Content="Cerrar Sesion" HorizontalAlignment="Left" Margin="40,608,0,0" VerticalAlignment="Top" Width="199" Height="32" Click="Button_Click_4" FontWeight="Bold"/>
+        <TextBox x:Name="VC_Cantidad" HorizontalAlignment="Left" Margin="125,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Height="32" Text="1"/>
+        <Label Content="Cantidad:&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="40,162,0,0" VerticalAlignment="Top" Height="26" FontWeight="Bold"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="40,123,0,0" VerticalAlignment="Top" Height="26" FontWeight="Bold"/>
+        <TextBox x:Name="VC_idproducto" HorizontalAlignment="Left" Margin="125,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Height="31" IsEnabled="False"/>
+        <Label Content="Id Producto:&#xD;&#xA;" HorizontalAlignment="Left" Margin="40,107,0,0" VerticalAlignment="Top" Height="29" FontWeight="Bold"/>
+        <Label Content="Tienda:" HorizontalAlignment="Left" Margin="285,18,0,0" VerticalAlignment="Top" Width="70" FontWeight="Bold" FontSize="16"/>
+        <Label Content="CARRITO DE COMPRA" HorizontalAlignment="Left" Margin="285,361,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
 
     </Grid>
 </Window>

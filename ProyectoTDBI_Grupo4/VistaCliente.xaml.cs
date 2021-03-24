@@ -34,7 +34,7 @@ namespace ProyectoTDBI_Grupo4
                 User,
                 Password);
         private DBAdmin dba = new DBAdmin(connString);
-        private static string user;
+        private static string user, dirreccionFac, idd;
         private static int idcliente;
 
         public VistaCliente(string u)
@@ -56,12 +56,13 @@ namespace ProyectoTDBI_Grupo4
             dba.clearQuery();
             dr = null;
             
-            dba.defineQuery("SELECT \"idCliente\" FROM cliente WHERE \"nombreUsuario\" = '" + user + "'");
+            dba.defineQuery("SELECT \"idCliente\",\"direccionFacturacion\" FROM cliente WHERE \"nombreUsuario\" = '" + user + "'");
             dr = dba.executeQuery();
             if (dr.HasRows)
             {
                 dr.Read();
                 idcliente = Convert.ToInt32(dr[0]);
+                dirreccionFac = Convert.ToString(dr[1]);
                 dba.close();
                 tablacarrito();
                 
@@ -142,7 +143,7 @@ namespace ProyectoTDBI_Grupo4
         {
             NpgsqlDataReader dr;
             dba.open();
-            string idd = (Convert.ToString(CB_TiendaSeleccionada.SelectedItem)).Split(",")[0];
+             idd = (Convert.ToString(CB_TiendaSeleccionada.SelectedItem)).Split(",")[0];
             List<Producto> listaOrden = new List<Producto>();
             dba.defineQuery("SELECT * FROM producto NATURAL JOIN inventario WHERE \"codigoTienda\" = " + idd);
             dr = dba.executeQuery();
@@ -181,25 +182,59 @@ namespace ProyectoTDBI_Grupo4
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            dba.open();
-            double pago=0;
-            string productos="";
             NpgsqlDataReader dr;
-            dba.defineQuery("SELECT precio,\"cantidadProductoCarrito\",\"nombreProducto\" FROM producto NATURAL JOIN (SELECT * FROM \"tieneEnCarrito\" WHERE  \"idCliente\" = " + idcliente+") AS carritoo");
+            List<DetalleFactura> detta = new List<DetalleFactura>();
+            double subtotal = 0, fijosub = 0;
+            string productos="";
+            int numFact = 0, nor = 0;
+            dba.open();
+            dba.defineQuery("SELECT COUNT (\"noFactura\") FROM factura");
+            dr = dba.executeQuery();
+            if (dr.HasRows)
+            {
+                dr.Read();
+                numFact = dr.GetInt32(0) + 1;
+            }
+            dba.clearQuery();
+            dr = null;
+            dba.defineQuery("SELECT precio,\"cantidadProductoCarrito\",\"nombreProducto\",\"idProducto\" FROM producto NATURAL JOIN (SELECT * FROM \"tieneEnCarrito\" WHERE  \"idCliente\" = " + idcliente+") AS carritoo");
             dr = dba.executeQuery();
             while (dr.Read())
             {
-                pago += dr.GetDouble(0)*dr.GetInt32(1);
-                double c= dr.GetDouble(0) * dr.GetInt32(1);
-                productos += dr.GetString(2)+" ("+dr.GetInt32(1)+")...."+c+"\n";
+                subtotal += dr.GetDouble(0)*dr.GetInt32(1);
+                fijosub = dr.GetDouble(0) * dr.GetInt32(1);
+                productos +=">"+ dr.GetString(2)+" ("+dr.GetInt32(1)+")...."+ dr.GetDouble(0) * dr.GetInt32(1) + "\n";
+                detta.Add(new DetalleFactura(numFact, (fijosub+fijosub*0.15) ,(fijosub*0.15) ,dr.GetInt32(1), dr.GetInt32(3),fijosub));
             }
-            MessageBox.Show("<-------|MENOSOTIRA|------->\n" +productos+"\n SUBTOTAL: "+ pago+"\n Disfrute su compra :D");
             dba.clearQuery();
+            dr = null;
+            DateTime dateTime = DateTime.UtcNow.Date;
+            dba.defineQuery("INSERT INTO factura VALUES (" + numFact + "," + Convert.ToInt32(idd) + ",'" + dateTime.ToString("dd/MM/yy") + "','" + dirreccionFac + "'," + idcliente + "," + Convert.ToInt32(idd) + "," + nor + ")");
+            dba.executeQuery();
+            dr = null;
+            for (int i = 0; i < detta.Count; i++)
+            {
+                dba.clearQuery();
+                dba.defineQuery("INSERT INTO \"detalleFactura\" VALUES ("+ detta[i].noFactura + ","+detta[i].total+","+detta[i].isv+","+detta[i].cantidadProducto+","+detta[i].idProducto+","+detta[i].subtotal+")");
+                dba.executeQuery();
+            }
+            dba.clearQuery();
+            dba.defineQuery("SELECT COUNT (\"noOrden\") FROM orden");
+            dr = dba.executeQuery();
+            if (dr.HasRows)
+            {
+                dr.Read();
+                nor = dr.GetInt32(0) + 1;
+            }
+            dba.clearQuery();
+            dba.defineQuery("INSERT INTO orden VALUES(" + nor + ",'" + user + "','FedEx','" + dirreccionFac + "'," + nor + "," + idcliente + ",'En espera')");
+            dba.executeQuery();
+            dba.clearQuery();
+            MessageBox.Show("<-------|MENOSOTIRA|------->\n\nSus Productos:\n" +productos+"\n SUBTOTAL:  "+ subtotal +"\nTOTAL:  "+(subtotal+subtotal*0.15)+ "\n\n< --|Disfrute su compra :D |--->");
             dba.defineQuery("DELETE  FROM \"tieneEnCarrito\" WHERE \"idCliente\"=" + idcliente);
             dba.executeQuery();
             dba.close();
             tablacarrito();
-
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
