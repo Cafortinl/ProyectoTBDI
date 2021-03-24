@@ -173,6 +173,7 @@ namespace ProyectoTDBI_Grupo4
         private void btGuardar_Click(object sender, RoutedEventArgs e)
         {
             dba.open();
+            bool executedCorrectly = true;
             NpgsqlDataReader dr;
             int index = 0;
             DataGridRow row = dgAgrEdit.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
@@ -198,8 +199,11 @@ namespace ProyectoTDBI_Grupo4
                                 else
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
-                            else
+                            else 
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                         case 2:
                             Categoria cat = (Categoria)info;
@@ -216,7 +220,10 @@ namespace ProyectoTDBI_Grupo4
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                         case 3:
                             Cliente clien = (Cliente)info;
@@ -233,7 +240,10 @@ namespace ProyectoTDBI_Grupo4
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                         case 4:
                             Contrato cont = (Contrato)info;
@@ -246,7 +256,10 @@ namespace ProyectoTDBI_Grupo4
                                 dba.defineQuery("INSERT INTO contrato VALUES(" + cont.noCuenta + "," + cont.cuota + ","+ cont.idCliente + ")");
                             }
                             else
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                         case 5:
                             DetalleFactura det = (DetalleFactura)info;
@@ -271,7 +284,10 @@ namespace ProyectoTDBI_Grupo4
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                         case 7:
                             Inventario inv = (Inventario)info;
@@ -284,7 +300,10 @@ namespace ProyectoTDBI_Grupo4
                                 dba.defineQuery("INSERT INTO inventario VALUES(" + inv.codigoTienda + "," + inv.codigoAlmacen + "," + inv.idProducto + "," + inv.cantidadInventario + ")");
                             }
                             else
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                         case 8:
                             Orden ord = (Orden)info;
@@ -301,7 +320,10 @@ namespace ProyectoTDBI_Grupo4
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                         case 9:
                             Producto prod = (Producto)info;
@@ -318,7 +340,10 @@ namespace ProyectoTDBI_Grupo4
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                         case 10:
                             Tienda tien = (Tienda)info;
@@ -335,7 +360,10 @@ namespace ProyectoTDBI_Grupo4
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                         case 11:
                             TieneEnCarrito carr = (TieneEnCarrito)info;
@@ -352,7 +380,10 @@ namespace ProyectoTDBI_Grupo4
                                     MessageBox.Show("No puede dejar campos en blanco.");
                             }
                             else
+                            {
+                                executedCorrectly = false;
                                 MessageBox.Show("No puede repetir la llave de una tabla");
+                            }
                             break;
                     }
                     break;
@@ -406,7 +437,8 @@ namespace ProyectoTDBI_Grupo4
                     }
                     break;
             }
-            dba.executeQuery();
+            if(executedCorrectly)
+                dba.executeQuery();
             dba.close();
             this.Close();
             av.updateTable();
