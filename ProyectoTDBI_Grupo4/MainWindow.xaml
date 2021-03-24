@@ -31,7 +31,7 @@
         <Label Content="Contraseña:&#xA;" HorizontalAlignment="Left" Margin="41,154,0,0" VerticalAlignment="Top" Grid.Row="2" Height="26" Width="79" Grid.Column="1" Grid.ColumnSpan="2"/>
         <Button x:Name="btInicioSesion" Content="Iniciar sesión" HorizontalAlignment="Left" Margin="41,243,0,0" VerticalAlignment="Top" Grid.Column="1" Click="btInicioSesion_Click" Grid.Row="2" Height="20" Width="256" Grid.ColumnSpan="2"/>
         <TextBox x:Name="tbUsuario" HorizontalAlignment="Left" Height="28" Margin="41,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <Button Content="Registrarse" Grid.Column="1" HorizontalAlignment="Left" Margin="41,268,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="256"/>
+        <Button Content="Registrarse" Grid.Column="1" HorizontalAlignment="Left" Margin="41,268,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="256" Click="Button_Click"/>
         <Image x:Name="User" Grid.Column="2" HorizontalAlignment="Left" Height="86" Margin="57,10,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.468,0.473" Source="/user.png" Stretch="Fill"/>
 
     </Grid>
