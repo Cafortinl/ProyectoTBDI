@@ -109,6 +109,7 @@ namespace ProyectoTDBI_Grupo4
 
         private void DG_Bodega_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            dba.open();
             int index = DG_Bodega.SelectedIndex;
             if (index > -1)
             {
@@ -116,20 +117,25 @@ namespace ProyectoTDBI_Grupo4
                 var info = DG_Bodega.ItemContainerGenerator.ItemFromContainer(row);
                 Producto a = (Producto)info;
                 NpgsqlDataReader dr;
-                dba.open();
                 string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[0];
-                dba.defineQuery("SELECT \"codigoAlmacen\" FROM inventario WHERE \"codigoTienda\" = " + ojayoporco);
+                dba.defineQuery("SELECT \"codigoAlmacen\", \"cantidadInventario\" FROM inventario WHERE \"codigoTienda\" = " + ojayoporco + " AND \"idProducto\"=" + a.idProducto);
                 dr = dba.executeQuery();
                 if (dr.HasRows)
                 {
                     dr.Read();
-                    ElMetodoQueFortinJodeParaQueHaga();
+                    MessageBox.Show("Entro 1");
+                    if (CB_codigoAlmacen.Items.Contains(dr.GetInt32(0)))
+                    {
+                        CB_codigoAlmacen.SelectedIndex = CB_codigoAlmacen.Items.IndexOf(dr.GetInt32(0));
+                        MessageBox.Show("Entro 2");
+                    }
                     
                 }
+                //ElMetodoQueFortinJodeParaQueHaga();
             }
             else
             {
-                ElMetodoQueFortinJodeParaQueHaga();
+                //ElMetodoQueFortinJodeParaQueHaga();
             }
             dba.close();
         }
