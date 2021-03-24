@@ -33,13 +33,15 @@ namespace ProyectoTDBI_Grupo4
                 Password);
         private DBAdmin dba = new DBAdmin(connString);
         private int ultiTienda = -1;
+        private string var=" ";
+        private Inventario inv;
 
         public Bodega()
         {
+            dba.open();
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             NpgsqlDataReader dr;
-            dba.open();
             List<String> infoTiend = new List<String>();
             dba.defineQuery("SELECT * FROM tienda");
             dr = dba.executeQuery();
@@ -59,6 +61,9 @@ namespace ProyectoTDBI_Grupo4
             }
             tablaGenerales.ItemsSource = listaOrden;
             tablaGenerales.CanUserAddRows = false;
+
+
+
             dba.close();
         }
         private void ElMetodoQueFortinJodeParaQueHaga()
@@ -89,10 +94,12 @@ namespace ProyectoTDBI_Grupo4
             codigoTienda.Text = ojayoporco;
         }
 
+
+
         private void tablaProducto()
         {
-            NpgsqlDataReader dr;
             dba.open();
+            NpgsqlDataReader dr;
             string idd = (Convert.ToString(CB_Bodega.SelectedItem)).Split(",")[0];
             List<Producto> listaOrden = new List<Producto>();
             dba.defineQuery("SELECT * FROM producto NATURAL JOIN inventario WHERE \"codigoTienda\" = " + idd);
@@ -109,7 +116,7 @@ namespace ProyectoTDBI_Grupo4
 
         private void DG_Bodega_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            dba.open();
+            
             int index = DG_Bodega.SelectedIndex;
             if (index > -1)
             {
@@ -118,26 +125,34 @@ namespace ProyectoTDBI_Grupo4
                 Producto a = (Producto)info;
                 NpgsqlDataReader dr;
                 string ojayoporco = ((string)CB_Bodega.SelectedItem).Split(",")[0];
+                idProducto.Text = Convert.ToString(a.idProducto);
+                dba.open();
                 dba.defineQuery("SELECT \"codigoAlmacen\", \"cantidadInventario\" FROM inventario WHERE \"codigoTienda\" = " + ojayoporco + " AND \"idProducto\"=" + a.idProducto);
                 dr = dba.executeQuery();
                 if (dr.HasRows)
                 {
                     dr.Read();
-                    MessageBox.Show("Entro 1");
-                    if (CB_codigoAlmacen.Items.Contains(dr.GetInt32(0)))
+                    cantidadProducto.Text= Convert.ToString(dr.GetInt32(1));
+                    var = Convert.ToString(dr.GetInt32(0));
+                    dba.close();
+                    int cont = 0;
+                    for (int i = 0; i < CB_codigoAlmacen.Items.Count; i++)
                     {
-                        CB_codigoAlmacen.SelectedIndex = CB_codigoAlmacen.Items.IndexOf(dr.GetInt32(0));
-                        MessageBox.Show("Entro 2");
+                        if ((int)CB_codigoAlmacen.Items[i]==Convert.ToInt32(var))
+                        {
+                            break;
+                        }
+                        cont++;
                     }
-                    
+                    CB_codigoAlmacen.SelectedIndex = cont;
+                    inv = new Inventario(Convert.ToInt32(codigoTienda.Text), Convert.ToInt32(CB_codigoAlmacen.Text), Convert.ToInt32(idProducto.Text), Convert.ToInt32(cantidadProducto.Text));
                 }
-                //ElMetodoQueFortinJodeParaQueHaga();
+                else
+                {
+                    dba.close();
+                }
             }
-            else
-            {
-                //ElMetodoQueFortinJodeParaQueHaga();
-            }
-            dba.close();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -148,30 +163,66 @@ namespace ProyectoTDBI_Grupo4
                 dba.defineQuery("INSERT INTO inventario VALUES ("+ Convert.ToInt32(codigoTienda.Text) + ","+ (int)CB_codigoAlmacen.SelectedItem +","+ Convert.ToInt32(idProducto.Text) +","+ Convert.ToInt32(cantidadProducto.Text) + ")");
                 dba.executeQuery();
                 dba.close();
+                tablaProducto();
+            }
+            else
+            {
+                MessageBox.Show("Ingrese una cantidad valida");
             }
         }
 
         private void tablaGenerales_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            dba.open();
+            bool abriendo = true;
             int index = tablaGenerales.SelectedIndex;
             DataGridRow row = tablaGenerales.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
             var info = tablaGenerales.ItemContainerGenerator.ItemFromContainer(row);
             Producto a = (Producto)info;
             idProducto.Text = Convert.ToString(a.idProducto);
             NpgsqlDataReader dr;
-            dba.open();
             dba.defineQuery("SELECT \"codigoAlmacen\" FROM inventario WHERE \"idProducto\" = " + a.idProducto + "AND \"codigoTienda\" = " + ultiTienda);
             dr = dba.executeQuery();
             dr.Read();
             if (dr.HasRows)
             {
+                abriendo = false;
+                dba.close();
                 ElMetodoQueFortinJodeParaQueHaga();
             }
-            dba.close();
+            if (abriendo == true)
+            {
+                dba.close();
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            dba.open();
+            dba.defineQuery("DELETE FROM inventario WHERE \"codigoTienda\" ="+Convert.ToInt32(codigoTienda.Text)+" AND \"idProducto\" = "+Convert.ToInt32(idProducto.Text));
+            dba.executeQuery();
+            dba.close();
+            tablaProducto();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (var != " ")
+            {
+                var = Convert.ToString( CB_codigoAlmacen.SelectedItem);
+                dba.open();
+                dba.defineQuery("UPDATE inventario SET \"codigoTienda\"=" + Convert.ToInt32(codigoTienda.Text)  + ",\"codigoAlmacen\"=" + Convert.ToInt32(var) + ",\"idProducto\"=" + Convert.ToInt32(idProducto.Text) + ",\"cantidadInventario\"=" +
+                Convert.ToInt32(cantidadProducto.Text) + " WHERE \"codigoTienda\"=" + inv.codigoTienda + " AND \"codigoAlmacen\"=" + inv.codigoAlmacen  + " AND \"idProducto\"=" + inv.idProducto +
+                "AND \"cantidadInventario\" ="+ inv.cantidadInventario);
+                dba.executeQuery();
+                dba.close();
+                tablaProducto();
+            }
+        }
+
+        private void CB_codigoAlmacen_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
 
         }
     }

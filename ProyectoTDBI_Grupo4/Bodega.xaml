@@ -10,7 +10,7 @@
         <ComboBox x:Name="CB_Bodega" HorizontalAlignment="Left" Height="26" Margin="423,68,0,0" VerticalAlignment="Top" Width="276" SelectionChanged="CB_Bodega_SelectionChanged"/>
         <DataGrid x:Name="DG_Bodega" HorizontalAlignment="Left" Height="135" Margin="30,424,0,0" VerticalAlignment="Top" Width="669" SelectionChanged="DG_Bodega_SelectionChanged"/>
         <Button Content="Agregar Producto al inventario" HorizontalAlignment="Left" Margin="305,310,0,0" VerticalAlignment="Top" Width="394" Height="24" Click="Button_Click"/>
-        <Button Content="Modificar Inventario&#xA;" HorizontalAlignment="Left" Margin="305,370,0,0" VerticalAlignment="Top" Width="394" Height="24"/>
+        <Button Content="Modificar Inventario&#xA;" HorizontalAlignment="Left" Margin="305,370,0,0" VerticalAlignment="Top" Width="394" Height="24" Click="Button_Click_2"/>
         <Label Content="Tienda:" HorizontalAlignment="Left" Margin="305,68,0,0" VerticalAlignment="Top" Width="96"/>
         <Button Content="Eliminar Inventario&#xA;" HorizontalAlignment="Left" Margin="305,339,0,0" VerticalAlignment="Top" Width="394" Height="24" Click="Button_Click_1"/>
         <Label Content="Codigo Almacen:" HorizontalAlignment="Left" Margin="305,104,0,0" VerticalAlignment="Top" Width="102"/>
@@ -22,7 +22,7 @@
         <TextBox x:Name="codigoTienda" HorizontalAlignment="Left" Margin="423,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="26" IsEnabled="False"/>
         <DataGrid x:Name="tablaGenerales" Margin="30,66,475,226" SelectionChanged="tablaGenerales_SelectionChanged"/>
         <Label Content="Todos los productos&#xD;&#xA;" HorizontalAlignment="Left" Margin="30,35,0,0" VerticalAlignment="Top" Height="26"/>
-        <ComboBox x:Name="CB_codigoAlmacen" HorizontalAlignment="Left" Height="26" Margin="423,106,0,0" VerticalAlignment="Top" Width="276" SelectionChanged="CB_Bodega_SelectionChanged"/>
+        <ComboBox x:Name="CB_codigoAlmacen" HorizontalAlignment="Left" Margin="423,104,0,0" VerticalAlignment="Top" Width="276" Height="26" SelectionChanged="CB_codigoAlmacen_SelectionChanged"/>
 
     </Grid>
 </Window>
