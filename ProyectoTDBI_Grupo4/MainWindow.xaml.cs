@@ -106,5 +106,10 @@ namespace ProyectoTDBI_Grupo4
             tbContra.Password = "";
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Registrarse r = new Registrarse();
+            r.Show();
+        }
     }
 }
