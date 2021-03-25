@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Npgsql;
 
 namespace ProyectoTDBI_Grupo4
 {
@@ -34,6 +35,114 @@ namespace ProyectoTDBI_Grupo4
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            List<string> reportes = new List<string> { "Envios destruidos", "Cliente estrella", "Agotados Tegucigalpa", "Facturas ultimo mes"};
+            cbReportes.ItemsSource = reportes;
+        }
+
+        struct ClienteEstrella
+        {
+            public int idCliente { get; set; }
+            public string nombre { get; set; }
+            public bool isFrecuente { get; set; }
+            public bool isVirtual { get; set; }
+            public string direccionFacturacion { get; set; }
+            public string nombreUsuario { get; set; }
+            public string password { get; set; }
+            public int numeroTarjeta { get; set; }
+            public string tarjetaHabiente { get; set; }
+            public int codigoSeguridad { get; set; }
+            public int mesVencimiento { get; set; }
+            public int yearVencimiento { get; set; }
+            public double total { get; set; }
+
+            public ClienteEstrella(int id, string n, bool f, bool v, string dir, string u, string p, int t, string th, int seg, int mv, int yv, double tot)
+            {
+                idCliente = id;
+                nombre = n;
+                isFrecuente = f;
+                isVirtual = v;
+                direccionFacturacion = dir;
+                nombreUsuario = u;
+                password = p;
+                numeroTarjeta = t;
+                tarjetaHabiente = th;
+                codigoSeguridad = seg;
+                mesVencimiento = mv;
+                yearVencimiento = yv;
+                total = tot;
+            }
+        }
+
+        struct ProdDest
+        {
+            public int idCliente { get; set; }
+            public string nombre { get; set; }
+            public string nombreUsuario { get; set; }
+            public string direccion { get; set; }
+            public int noOrden { get; set; }
+            public int noSeguimiento { get; set; }
+
+            public ProdDest(int id, string n, string u, string dir, int o, int s)
+            {
+                idCliente = id;
+                nombre = n;
+                nombreUsuario = u;
+                direccion = dir;
+                noOrden = o;
+                noSeguimiento = s;
+            }
+
+        }
+
+        private void cbReportes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dba.open();
+            NpgsqlDataReader dr;
+            switch (cbReportes.SelectedItem)
+            {
+                case "Envios destruidos":
+                    List<ProdDest> dest = new List<ProdDest>();
+                    dba.defineQuery("SELECT * FROM destruidos");
+                    dr = dba.executeQuery();
+                    while (dr.Read())
+                    {
+                        dest.Add(new ProdDest(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5)));
+                    }
+                    dgReportes.ItemsSource = dest;
+                    break;
+                case "Cliente estrella":
+                    List<ClienteEstrella> clien = new List<ClienteEstrella>();
+                    dba.defineQuery("SELECT * FROM \"clienteEstrella\"");
+                    dr = dba.executeQuery();
+                    while (dr.Read())
+                    {
+                        clien.Add(new ClienteEstrella(dr.GetInt32(0), dr.GetString(1), dr.GetBoolean(2), dr.GetBoolean(3), dr.GetString(4), dr.GetString(5), dr.GetString(6), dr.GetInt32(7), dr.GetString(8), dr.GetInt32(9), dr.GetInt32(10), dr.GetInt32(11), dr.GetDouble(12)));
+                    }
+                    dgReportes.ItemsSource = clien;
+                    break;
+                case "Agotados Tegucigalpa":
+                    List<Producto> prod = new List<Producto>();
+                    dba.defineQuery("SELECT * FROM \"agotadosTegus\"");
+                    dr = dba.executeQuery();
+                    while (dr.Read())
+                    {
+                        prod.Add(new Producto(dr.GetString(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetDouble(6)));
+                    }
+                    dgReportes.ItemsSource = prod;
+                    break;
+                case "Facturas ultimo mes":
+                    List<Factura> fact = new List<Factura>();
+                    dba.defineQuery("SELECT * FROM \"facturasMensuales\"");
+                    dr = dba.executeQuery();
+                    while (dr.Read())
+                    {
+                        fact.Add(new Factura(dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6)));
+                    }
+                    dgReportes.ItemsSource = fact;
+                    break;
+            }
+            dba.close();
+            dgReportes.IsReadOnly = true;
         }
     }
 }
