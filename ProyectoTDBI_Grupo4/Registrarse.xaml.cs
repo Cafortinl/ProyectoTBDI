@@ -115,5 +115,10 @@ namespace ProyectoTDBI_Grupo4
             }
             dba.close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

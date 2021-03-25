@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="Administración" Height="488" Width="841" WindowState="Normal">
+        Title="Administración" Height="700" Width="1100" WindowState="Normal">
     <Grid Margin="0,0,10,27">
-        <Label Content="Tabla actual" HorizontalAlignment="Left" Margin="21,20,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbTablaSelec" HorizontalAlignment="Left" Margin="21,46,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbTablaSelec_SelectionChanged"/>
-        <DataGrid x:Name="dgInfo" Margin="160,46,21,10" RowHeight="30" ColumnWidth="100"/>
-        <Button x:Name="btAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="54,96,0,0" VerticalAlignment="Top" Width="65" Click="btAgregar_Click"/>
-        <Button x:Name="btModificar" Content="Modificar" HorizontalAlignment="Left" Margin="54,147,0,0" VerticalAlignment="Top" Click="btModificar_Click" Width="65"/>
-        <Button x:Name="btEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="54,198,0,0" VerticalAlignment="Top" Width="65" Click="btEliminar_Click"/>
-        <Button x:Name="btLogoff" Content="Cerrar sesión" HorizontalAlignment="Left" Margin="737,13,0,0" VerticalAlignment="Top" Click="btLogoff_Click"/>
-        <Button x:Name="btReportes" Content="Reportes" HorizontalAlignment="Left" Margin="54,310,0,0" VerticalAlignment="Top" Width="65" Click="btReportes_Click"/>
-        <Button x:Name="btEmpleados" Content="Empleados" HorizontalAlignment="Left" Margin="54,254,0,0" VerticalAlignment="Top" Width="65" Click="btEmpleados_Click"/>
+        <Label Content="Tabla actual:" HorizontalAlignment="Left" Margin="206,73,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <ComboBox x:Name="cbTablaSelec" HorizontalAlignment="Left" Margin="303,73,0,0" VerticalAlignment="Top" Width="766" SelectionChanged="cbTablaSelec_SelectionChanged" Height="29"/>
+        <DataGrid x:Name="dgInfo" Margin="206,124,21,30" RowHeight="30" ColumnWidth="100"/>
+        <Button x:Name="btAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="21,180,0,0" VerticalAlignment="Top" Width="173" Click="btAgregar_Click" Height="26" FontWeight="Bold"/>
+        <Button x:Name="btModificar" Content="Modificar" HorizontalAlignment="Left" Margin="21,235,0,0" VerticalAlignment="Top" Click="btModificar_Click" Width="173" Height="26" FontWeight="Bold"/>
+        <Button x:Name="btEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="21,293,0,0" VerticalAlignment="Top" Width="173" Click="btEliminar_Click" Height="26" FontWeight="Bold"/>
+        <Button x:Name="btLogoff" Content="Cerrar sesión" HorizontalAlignment="Left" Margin="21,601,0,0" VerticalAlignment="Top" Click="btLogoff_Click" Height="26" Width="173" FontWeight="Bold"/>
+        <Button x:Name="btReportes" Content="Reportes" HorizontalAlignment="Left" Margin="21,405,0,0" VerticalAlignment="Top" Width="173" Click="btReportes_Click" Height="26" FontWeight="Bold"/>
+        <Button x:Name="btEmpleados" Content="Empleados" HorizontalAlignment="Left" Margin="21,350,0,0" VerticalAlignment="Top" Width="173" Click="btEmpleados_Click" Height="26" FontWeight="Bold"/>
+        <Label Content="ADMINISTRADOR" HorizontalAlignment="Left" Margin="21,124,0,0" VerticalAlignment="Top" FontSize="19.3" FontWeight="Bold" Width="173"/>
     </Grid>
 </Window>

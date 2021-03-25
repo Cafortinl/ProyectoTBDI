@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="ServicioCliente" Height="395" Width="702">
+        Title="ServicioCliente" Height="700" Width="1100">
     <Grid Margin="0,0,0,-6">
         <Viewbox HorizontalAlignment="Left" Margin="203,251,0,0" VerticalAlignment="Top" Stretch="Fill"/>
-        <ComboBox x:Name="SC_TiendaSeleccionada" HorizontalAlignment="Left" Margin="84,32,0,0" VerticalAlignment="Top" Width="417" Height="26"/>
-        <TextBox x:Name="tx_idproducto" HorizontalAlignment="Left" Margin="112,79,0,0" Text="&#xD;&#xA;" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Height="25"/>
-        <Label Content="Tienda:" HorizontalAlignment="Left" Margin="31,32,0,0" VerticalAlignment="Top"/>
-        <Label Content="ID Producto:" HorizontalAlignment="Left" Margin="31,79,0,0" VerticalAlignment="Top" Height="25"/>
-        <Button Content="Buscar" HorizontalAlignment="Left" Margin="31,137,0,0" VerticalAlignment="Top" Width="246" Height="26" Click="Button_Click"/>
-        <DataGrid x:Name="Tablaproducto" Margin="34,210,377,38"/>
-        <DataGrid x:Name="tablaTiendas" Margin="362,210,49,38"/>
-        <Label Content="Productos:" HorizontalAlignment="Left" Margin="36,179,0,0" VerticalAlignment="Top"/>
-        <Label Content="Mas tiendas donde esta disponible:" HorizontalAlignment="Left" Margin="362,179,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="SC_TiendaSeleccionada" HorizontalAlignment="Left" Margin="94,46,0,0" VerticalAlignment="Top" Width="588" Height="29"/>
+        <TextBox x:Name="tx_idproducto" HorizontalAlignment="Left" Margin="831,139,0,0" Text="&#xD;&#xA;" TextWrapping="Wrap" VerticalAlignment="Top" Width="196" Height="35"/>
+        <Label Content="Tienda:" HorizontalAlignment="Left" Margin="31,46,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label Content="ID Producto:" HorizontalAlignment="Left" Margin="718,139,0,0" VerticalAlignment="Top" Height="35" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Buscar" HorizontalAlignment="Left" Margin="718,203,0,0" VerticalAlignment="Top" Width="309" Height="35" Click="Button_Click"/>
+        <DataGrid x:Name="Tablaproducto" Margin="32,118,418,358"/>
+        <DataGrid x:Name="tablaTiendas" Margin="31,406,49,38"/>
+        <Label Content="Productos:" HorizontalAlignment="Left" Margin="32,87,0,0" VerticalAlignment="Top" Width="98" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Mas tiendas donde esta disponible:" HorizontalAlignment="Left" Margin="31,372,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
 
     </Grid>
 </Window>

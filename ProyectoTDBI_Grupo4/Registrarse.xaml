@@ -5,31 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="Registrarse" Height="450" Width="399">
-    <Grid>
-        <TextBox x:Name="tbID" HorizontalAlignment="Left" Margin="41,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbNombre" HorizontalAlignment="Left" Margin="41,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <CheckBox x:Name="cbFrecuente" Content="Cliente frecuente" HorizontalAlignment="Left" Margin="41,154,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cbVirtual" Content="Cliente virtual" HorizontalAlignment="Left" Margin="41,198,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbDireccion" HorizontalAlignment="Left" Margin="41,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbUsuario" HorizontalAlignment="Left" Margin="41,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="41,364,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbTarjeta" HorizontalAlignment="Left" Margin="231,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbThabiente" HorizontalAlignment="Left" Margin="231,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbCodSeg" HorizontalAlignment="Left" Margin="231,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbMes" HorizontalAlignment="Left" Margin="231,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btRegistrarse" Content="Registrarse" HorizontalAlignment="Left" Margin="231,358,0,0" VerticalAlignment="Top" Width="120" Click="btRegistrarse_Click"/>
-        <Label Content="id. cliente" HorizontalAlignment="Left" Margin="41,24,0,0" VerticalAlignment="Top"/>
-        <Label Content="nombre" HorizontalAlignment="Left" Margin="41,83,0,0" VerticalAlignment="Top"/>
-        <Label Content="Direccion" HorizontalAlignment="Left" Margin="41,228,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nombre usuario" HorizontalAlignment="Left" Margin="41,282,0,0" VerticalAlignment="Top"/>
-        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="41,336,0,0" VerticalAlignment="Top"/>
-        <Label Content="No. tarjeta" HorizontalAlignment="Left" Margin="231,29,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tarjetahabiente" HorizontalAlignment="Left" Margin="231,83,0,0" VerticalAlignment="Top"/>
-        <Label Content="Codigo Seguridad" HorizontalAlignment="Left" Margin="231,136,0,0" VerticalAlignment="Top"/>
-        <Label Content="Mes vencimiento" HorizontalAlignment="Left" Margin="231,191,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbYear" HorizontalAlignment="Left" Margin="231,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.464,-1.093"/>
-        <Label Content="Año vencimiento" HorizontalAlignment="Left" Margin="231,242,0,0" VerticalAlignment="Top"/>
+        Title="Registrarse" Height="542" Width="948">
+    <Grid Margin="0,0,10,16">
+        <TextBox x:Name="tbID" HorizontalAlignment="Left" Margin="41,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="398" Height="32"/>
+        <TextBox x:Name="tbNombre" HorizontalAlignment="Left" Margin="41,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="398" Height="32"/>
+        <CheckBox x:Name="cbFrecuente" Content="Cliente frecuente" HorizontalAlignment="Left" Margin="698,371,0,0" VerticalAlignment="Top" Height="27" Width="124" FontSize="13" FontWeight="Bold"/>
+        <CheckBox x:Name="cbVirtual" Content="Cliente virtual" HorizontalAlignment="Left" Margin="487,371,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <TextBox x:Name="tbDireccion" HorizontalAlignment="Left" Margin="41,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="398" Height="32"/>
+        <TextBox x:Name="tbUsuario" HorizontalAlignment="Left" Margin="41,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="398" Height="32"/>
+        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="41,310,0,0" VerticalAlignment="Top" Width="398" Height="32"/>
+        <TextBox x:Name="tbTarjeta" HorizontalAlignment="Left" Margin="483,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="398" Height="32"/>
+        <TextBox x:Name="tbThabiente" HorizontalAlignment="Left" Margin="483,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="398" Height="32"/>
+        <TextBox x:Name="tbCodSeg" HorizontalAlignment="Left" Margin="483,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="398" Height="32"/>
+        <TextBox x:Name="tbMes" HorizontalAlignment="Left" Margin="483,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" Height="32"/>
+        <Button x:Name="btRegistrarse" Content="Registrarse" HorizontalAlignment="Left" Margin="207,436,0,0" VerticalAlignment="Top" Width="674" Click="btRegistrarse_Click" Height="32" FontWeight="Bold"/>
+        <Label Content="ID Cliente:&#xD;&#xA;" HorizontalAlignment="Left" Margin="41,90,0,0" VerticalAlignment="Top" Height="31" FontSize="13" FontWeight="Bold"/>
+        <Label Content="Nombre Completo:" HorizontalAlignment="Left" Margin="41,158,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label Content="Direccion:" HorizontalAlignment="Left" Margin="41,347,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label Content="User:" HorizontalAlignment="Left" Margin="41,221,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label Content="Contraseña:" HorizontalAlignment="Left" Margin="41,284,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label Content="No. tarjeta:" HorizontalAlignment="Left" Margin="483,95,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label Content="Tarjeta Habiente:" HorizontalAlignment="Left" Margin="483,158,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label Content="Codigo Seguridad:" HorizontalAlignment="Left" Margin="483,221,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label Content="Mes vencimiento:" HorizontalAlignment="Left" Margin="483,284,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <TextBox x:Name="tbYear" HorizontalAlignment="Left" Margin="698,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" RenderTransformOrigin="0.464,-1.093" Height="32"/>
+        <Label Content="Año vencimiento:" HorizontalAlignment="Left" Margin="698,284,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label Content="REGISTRO DE CLIENTE" HorizontalAlignment="Left" Margin="41,42,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Button Content="Salir" HorizontalAlignment="Left" Margin="43,436,0,0" VerticalAlignment="Top" Height="32" Width="148" FontWeight="Bold" Click="Button_Click"/>
 
     </Grid>
 </Window>

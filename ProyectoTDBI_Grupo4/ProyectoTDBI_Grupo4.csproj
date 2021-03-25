@@ -7,18 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="de.jpg" />
-    <None Remove="user.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Npgsql" Version="5.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="de.jpg" />
-    <Resource Include="user.png" />
   </ItemGroup>
 
 </Project>
