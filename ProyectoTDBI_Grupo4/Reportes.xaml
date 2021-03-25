@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoTDBI_Grupo4"
         mc:Ignorable="d"
-        Title="Reportes" Height="450" Width="800">
-    <Grid>
-        <ComboBox x:Name="cbReportes" HorizontalAlignment="Left" Margin="37,55,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbReportes_SelectionChanged"/>
-        <DataGrid x:Name="dgReportes" Margin="207,55,44,48"/>
-        <Label Content="Viendo reporte" HorizontalAlignment="Left" Margin="37,24,0,0" VerticalAlignment="Top"/>
+        Title="Reportes" Height="600" Width="1000">
+    <Grid Margin="0,0,0,16">
+        <ComboBox x:Name="cbReportes" HorizontalAlignment="Left" Margin="156,101,0,0" VerticalAlignment="Top" Width="800" SelectionChanged="cbReportes_SelectionChanged" Height="36"/>
+        <DataGrid x:Name="dgReportes" Margin="37,150,44,78"/>
+        <Label Content="Viendo reporte:" HorizontalAlignment="Left" Margin="37,101,0,0" VerticalAlignment="Top" Height="36" FontSize="14" FontWeight="Bold"/>
+        <Label Content="REPORTES" HorizontalAlignment="Left" Margin="37,38,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Button Content="Salir" HorizontalAlignment="Left" Margin="37,509,0,0" VerticalAlignment="Top" Height="31" Width="919" Click="Button_Click"/>
 
     </Grid>
 </Window>

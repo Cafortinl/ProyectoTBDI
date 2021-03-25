@@ -52,10 +52,8 @@ namespace ProyectoTDBI_Grupo4
                 infoTiend.Add(Convert.ToString(dr.GetInt32(0)) + " , " + dr.GetString(1));
             }
             CB_TiendaSeleccionada.ItemsSource = infoTiend;
-
             dba.clearQuery();
             dr = null;
-            
             dba.defineQuery("SELECT \"idCliente\",\"direccionFacturacion\" FROM cliente WHERE \"nombreUsuario\" = '" + user + "'");
             dr = dba.executeQuery();
             if (dr.HasRows)
@@ -65,7 +63,10 @@ namespace ProyectoTDBI_Grupo4
                 dirreccionFac = Convert.ToString(dr[1]);
                 dba.close();
                 tablacarrito();
-                
+            }
+            else
+            {
+                dba.close();
             }
         }
 
@@ -89,14 +90,12 @@ namespace ProyectoTDBI_Grupo4
                     int cantidad = dr.GetInt32(0);
                     cantidad += canti;
                     dba.clearQuery();
-                    dr = null;
                     dba.defineQuery("UPDATE \"tieneEnCarrito\" SET \"cantidadProductoCarrito\"="+cantidad+ "WHERE \"idCliente\" = " + idcliente + " AND \"idProducto\" =" + idpro);
                     dba.executeQuery();
                 }
                 else
                 {
                     dba.clearQuery();
-                    dr = null;
                     dba.defineQuery("INSERT INTO  \"tieneEnCarrito\" VALUES (" + idcliente + "," + idpro + "," + canti + ")");
                     dba.executeQuery();
                 }
