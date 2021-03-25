@@ -8,7 +8,7 @@
         Title="ServicioCliente" Height="700" Width="1100">
     <Grid Margin="0,0,0,-6">
         <Viewbox HorizontalAlignment="Left" Margin="203,251,0,0" VerticalAlignment="Top" Stretch="Fill"/>
-        <ComboBox x:Name="SC_TiendaSeleccionada" HorizontalAlignment="Left" Margin="803,117,0,0" VerticalAlignment="Top" Width="224" Height="29"/>
+        <ComboBox x:Name="SC_TiendaSeleccionada" HorizontalAlignment="Left" Margin="803,117,0,0" VerticalAlignment="Top" Width="224" Height="29" SelectionChanged="SC_TiendaSeleccionada_SelectionChanged"/>
         <TextBox x:Name="tx_idproducto" HorizontalAlignment="Left" Margin="832,189,0,0" Text="&#xD;&#xA;" TextWrapping="Wrap" VerticalAlignment="Top" Width="196" Height="35"/>
         <Label Content="Tienda:" HorizontalAlignment="Left" Margin="719,117,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Width="79"/>
         <Label Content="ID Producto:" HorizontalAlignment="Left" Margin="719,189,0,0" VerticalAlignment="Top" Height="35" FontSize="14" FontWeight="Bold"/>
