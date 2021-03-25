@@ -346,5 +346,17 @@ namespace ProyectoTDBI_Grupo4
             else
                 MessageBox.Show("Debe seleccionar un elemento para poder modificarlo.");
         }
+
+        private void btEmpleados_Click(object sender, RoutedEventArgs e)
+        {
+            Empleados emp = new Empleados();
+            emp.Show();
+        }
+
+        private void btReportes_Click(object sender, RoutedEventArgs e)
+        {
+            Reportes rep = new Reportes();
+            rep.Show();
+        }
     }
 }

@@ -27,7 +27,7 @@
         <Label Content="No. tarjeta" HorizontalAlignment="Left" Margin="231,29,0,0" VerticalAlignment="Top"/>
         <Label Content="Tarjetahabiente" HorizontalAlignment="Left" Margin="231,83,0,0" VerticalAlignment="Top"/>
         <Label Content="Codigo Seguridad" HorizontalAlignment="Left" Margin="231,136,0,0" VerticalAlignment="Top"/>
-        <Label Content="Mes vencimiento&#xD;&#xA;" HorizontalAlignment="Left" Margin="231,191,0,0" VerticalAlignment="Top"/>
+        <Label Content="Mes vencimiento" HorizontalAlignment="Left" Margin="231,191,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbYear" HorizontalAlignment="Left" Margin="231,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.464,-1.093"/>
         <Label Content="Año vencimiento" HorizontalAlignment="Left" Margin="231,242,0,0" VerticalAlignment="Top"/>
 
