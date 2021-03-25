@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Reportes" Height="450" Width="800">
     <Grid>
-        
+        <ComboBox x:Name="cbReportes" HorizontalAlignment="Left" Margin="37,55,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbReportes_SelectionChanged"/>
+        <DataGrid x:Name="dgReportes" Margin="207,55,44,48"/>
+        <Label Content="Viendo reporte" HorizontalAlignment="Left" Margin="37,24,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
