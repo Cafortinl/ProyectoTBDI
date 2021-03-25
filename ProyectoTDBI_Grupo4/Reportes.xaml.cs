@@ -35,7 +35,7 @@ namespace ProyectoTDBI_Grupo4
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            List<string> reportes = new List<string> { "Envios destruidos", "Cliente estrella", "Agotados Tegucigalpa", "Facturas ultimo mes"};
+            List<string> reportes = new List<string> { "Envios destruidos", "Cliente estrella", "Principales Dolares", "Principales Ventas", "Agotados Tegucigalpa", "Facturas ultimo mes"};
             cbReportes.ItemsSource = reportes;
         }
 
@@ -94,6 +94,37 @@ namespace ProyectoTDBI_Grupo4
 
         }
 
+        struct principalDolares
+        {
+            public int idProducto { get; set; }
+            public string nombreProducto { get; set; }
+            public string fabricante { get; set; }
+            public double total { get; set; }
+
+            public principalDolares(int i, string n, string f, double t)
+            {
+                idProducto = i;
+                nombreProducto = n;
+                fabricante = f;
+                total = t;
+            }
+        }
+        struct principalVentas
+        {
+            public int idProducto { get; set; }
+            public string nombreProducto { get; set; }
+            public string fabricante { get; set; }
+            public int cantidad { get; set; }
+
+            public principalVentas(int i, string n, string f, int c)
+            {
+                idProducto = i;
+                nombreProducto = n;
+                fabricante = f;
+                cantidad = c;
+            }
+        }
+
         private void cbReportes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dba.open();
@@ -139,6 +170,26 @@ namespace ProyectoTDBI_Grupo4
                         fact.Add(new Factura(dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6)));
                     }
                     dgReportes.ItemsSource = fact;
+                    break;
+                case "Principales Dolares":
+                    List<principalDolares> pd = new List<principalDolares>();
+                    dba.defineQuery("SELECT * FROM \"principalesDolares\"");
+                    dr = dba.executeQuery();
+                    while (dr.Read())
+                    {
+                        pd.Add(new principalDolares(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetDouble(3)));
+                    }
+                    dgReportes.ItemsSource = pd;
+                    break;
+                case "Principales Ventas":
+                    List<principalVentas> pv = new List<principalVentas>();
+                    dba.defineQuery("SELECT * FROM \"principalCant\"");
+                    dr = dba.executeQuery();
+                    while (dr.Read())
+                    {
+                        pv.Add(new principalVentas(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetInt32(3)));
+                    }
+                    dgReportes.ItemsSource = pv;
                     break;
             }
             dba.close();

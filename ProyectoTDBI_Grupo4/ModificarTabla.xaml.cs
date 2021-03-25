@@ -412,7 +412,7 @@ namespace ProyectoTDBI_Grupo4
                             break;
                         case 6:
                             Factura fact = (Factura)info;
-                            dba.defineQuery("UPDATE factura SET \"noFactura\"=" + fact.noFactura + ",RTN=" + fact.RTN + ",\"fechaEmision\"='" + fact.fechaEmision + "',direccion='" + fact.direccion + "',\"idCliente\"=" + fact.idCliente + ",\"codigoTienda\"=" + fact.codigoTienda + ",\"noOrden\"=" + fact.noOrden + " WHERE \"noFactura\"=" + ((Factura)elemento).noFactura);
+                            dba.defineQuery("UPDATE factura SET \"noFactura\"=" + fact.noFactura + ",\"RTN\"=" + fact.RTN + ",\"fechaEmision\"='" + fact.fechaEmision + "',direccion='" + fact.direccion + "',\"idCliente\"=" + fact.idCliente + ",\"codigoTienda\"=" + fact.codigoTienda + ",\"noOrden\"=" + fact.noOrden + " WHERE \"noFactura\"=" + ((Factura)elemento).noFactura);
                             break;
                         case 7:
                             Inventario inv = (Inventario)info;
