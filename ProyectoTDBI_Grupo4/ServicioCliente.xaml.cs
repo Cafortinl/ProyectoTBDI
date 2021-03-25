@@ -83,5 +83,9 @@ namespace ProyectoTDBI_Grupo4
             dba.close();
         }
 
+        private void SC_TiendaSeleccionada_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

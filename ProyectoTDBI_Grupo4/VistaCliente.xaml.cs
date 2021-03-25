@@ -111,10 +111,13 @@ namespace ProyectoTDBI_Grupo4
         private void TablaProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
                 int index = TablaProducto.SelectedIndex;
+               if (index != -1)
+            {
                 DataGridRow row = TablaProducto.ItemContainerGenerator.ContainerFromIndex(index) as DataGridRow;
                 var info = TablaProducto.ItemContainerGenerator.ItemFromContainer(row);
                 Producto a = (Producto)info;
                 VC_idproducto.Text = Convert.ToString(a.idProducto);
+            }
         }
 
         private void CB_TiendaSeleccionada_SelectionChanged(object sender, SelectionChangedEventArgs e)
